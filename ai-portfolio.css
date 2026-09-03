@@ -1,0 +1,63 @@
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 38px 25px;
+}
+
+.video-card.ai .video-art {
+  aspect-ratio: 16 / 9;
+}
+
+.video-card.ai .video-art img {
+  position: absolute;
+  top: -16.666%;
+  width: 100%;
+  height: 133.333%;
+  object-fit: cover;
+}
+
+.video-card.ai .art-label {
+  right: auto;
+  width: max-content;
+  max-width: calc(100% - 34px);
+  padding: 7px 9px;
+  border-radius: 3px;
+  background: var(--acid);
+  color: #18200d;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.video-card.ai .art-label > span {
+  margin-left: 14px;
+}
+
+.ai-note {
+  max-width: 760px;
+  margin: -12px 0 24px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+@media (width <= 900px) {
+  .ai-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width <= 760px) {
+  .ai-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .video-card.ai h3 {
+    font-size: 20px;
+  }
+
+  .video-card.ai .art-label {
+    max-width: calc(100% - 22px);
+    inset-inline: 11px auto;
+  }
+}
