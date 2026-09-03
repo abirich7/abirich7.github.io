@@ -110,9 +110,24 @@
     });
   };
 
+  const start = () => {
+    if (document.querySelector("#work")) {
+      initialise();
+      return;
+    }
+
+    const observer = new MutationObserver(() => {
+      if (document.querySelector("#work")) {
+        observer.disconnect();
+        initialise();
+      }
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  };
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => requestAnimationFrame(initialise), { once: true });
+    document.addEventListener("DOMContentLoaded", start, { once: true });
   } else {
-    requestAnimationFrame(initialise);
+    start();
   }
 })();
