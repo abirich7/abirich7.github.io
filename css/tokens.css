@@ -1,0 +1,115 @@
+/* Design tokens shared by every stylesheet. Owned by the lead; builders consume, never redefine. */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces: warm graphite taken from the studio backdrop in the portrait */
+  --bg: #0b0a09;
+  --bg-2: #100f0d;
+  --surface: #171513;
+  --surface-2: #1f1c19;
+  --surface-3: #2a2622;
+  --line: rgba(243, 236, 226, 0.10);
+  --line-2: rgba(243, 236, 226, 0.18);
+  --line-3: rgba(243, 236, 226, 0.32);
+
+  /* Text: cream from the suit */
+  --text: #f6f0e7;
+  --text-2: #ddd5ca;               /* body copy: brighter for easy reading */
+  --muted: #aca296;
+  --faint: #7f766c;
+
+  /* Accent: the warm rim light in the photo */
+  --accent: #ff7a2f;
+  --accent-2: #ffb36b;
+  --accent-ink: #1a0e05;           /* text on accent fills */
+  --accent-glow: rgba(255, 122, 47, 0.35);
+  --tally: #ff3b2f;                /* REC / playhead red */
+
+  /* Data palette (categorical). Amber, cream, teal, violet read clearly on --bg */
+  --data-1: #ff7a2f;               /* primary series, Shorts */
+  --data-2: #f3ece2;               /* secondary series */
+  --data-3: #4fd1c5;               /* contrast series, Long-form, cadence line */
+  --data-4: #a594ff;               /* AI visuals */
+  --data-grid: rgba(243, 236, 226, 0.08);
+  --data-axis: rgba(243, 236, 226, 0.45);
+  /* Sequential ramp for heatmaps (low to high) */
+  --seq-0: #1f1c19;
+  --seq-1: #4a2a16;
+  --seq-2: #8a3f17;
+  --seq-3: #d1591d;
+  --seq-4: #ff9a52;
+  --seq-5: #ffd3a6;
+
+  /* Brand-total badge (numbers that belong to the Keerthi brand, not solely to Abirich) */
+  --badge-bg: rgba(79, 209, 197, 0.12);
+  --badge-fg: #7fe3d9;
+
+  /* Paper (Hire brief, print) */
+  --paper: #f6f1e8;
+  --paper-ink: #16130f;
+  --paper-muted: #6d655b;
+
+  /* Type */
+  --font-display: "Bricolage Grotesque", "Geist", system-ui, sans-serif;
+  --font-body: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --fs-hero: clamp(2.6rem, 1.2rem + 6.2vw, 7.2rem);
+  --fs-mega: clamp(7rem, 2rem + 24vw, 26rem);     /* giant numerals behind the portrait */
+  --fs-h2: clamp(2rem, 1.2rem + 3.4vw, 4.4rem);
+  --fs-h3: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
+  --fs-stat: clamp(2.3rem, 1.5rem + 3.2vw, 4.1rem);
+  --fs-lead: clamp(1.18rem, 1.02rem + 0.55vw, 1.45rem);
+  --fs-body: clamp(1.0625rem, 1rem + 0.25vw, 1.15rem);
+  --fs-small: clamp(0.97rem, 0.94rem + 0.12vw, 1.02rem);
+  --fs-micro: 0.82rem;             /* mono labels, timecode, chips */
+
+  /* Space, radius, layout */
+  --gutter: clamp(16px, 4vw, 56px);
+  --maxw: 1320px;
+  --section-y: clamp(88px, 12vw, 180px);
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-pill: 999px;
+
+  /* Elevation */
+  --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+  --shadow-2: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-cut: steps(1, end);
+  --dur-1: 160ms;
+  --dur-2: 320ms;
+  --dur-3: 640ms;
+  --dur-4: 1100ms;
+
+  /* Layers */
+  --z-bg: 0;
+  --z-hero-gl: 1;
+  --z-hero-photo: 2;
+  --z-hero-fg: 3;
+  --z-content: 5;
+  --z-header: 50;
+  --z-dock: 50;
+  --z-tooltip: 60;
+  --z-dialog: 100;
+
+  /* Fixed chrome heights (JS and CSS both read these) */
+  --header-h: 64px;
+  --dock-h: 58px;
+}
+
+@media (max-width: 767px) {
+  :root { --header-h: 56px; --dock-h: 0px; }
+}
+
+/* Motion levels: html[data-motion="full" | "calm" | "off"], set by js/state.js */
+html[data-motion="off"] *, html[data-motion="off"] *::before, html[data-motion="off"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
