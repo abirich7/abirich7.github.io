@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import data from '../public/data/yogic_insights.json';
-import videos from '../public/data/edited_videos.json';
+import data from '../../data/yogic_insights.json';
+import videos from '../../data/edited_videos.json';
 
 type View = 'Performance' | 'Publication cohorts' | 'Posting patterns' | 'Selected edits';
 type Row = { label: string; value: number; detail?: string };

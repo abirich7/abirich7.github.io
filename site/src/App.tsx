@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useMouseScrub, useReducedMotion, useTypewriter } from './hooks';
-import videoData from '../public/data/edited_videos.json';
+import videoData from '../../data/edited_videos.json';
 import GrowthData from './GrowthData';
 
 const EMAIL = 'abirichcrown@gmail.com';

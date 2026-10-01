@@ -21,7 +21,7 @@ React, TypeScript, Vite and Tailwind CSS. Editable source lives in `site/`. The 
 | `site/public/assets/` | Portrait and film thumbnails |
 
 ## Updating numbers
-Edit the JSON files in `site/public/data/` and the matching figures in the React app. Keep source dates current. Keerthi channel totals are whole-brand totals, not growth attributed to one person. Publication cohorts show lifetime views grouped by publication month, not historical monthly view counts. Each film retains its individual edit and AI credits.
+Edit the JSON files in root `data/`, copy them into `site/public/data/` for downloadable copies, and update matching figures in the React app. Keep source dates current. Keerthi channel totals are whole-brand totals, not growth attributed to one person. Publication cohorts show lifetime views grouped by publication month, not historical monthly view counts. Each film retains its individual edit and AI credits.
 
 ## Preview locally
 From `site/`, run `pnpm install --frozen-lockfile`, then `pnpm dev`. Preview at http://127.0.0.1:4175/.
