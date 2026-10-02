@@ -434,3 +434,14 @@ html[data-motion=calm] .rv{transform:none}
  html.brief-open .brief__sheet{padding:0;font-size:10.5pt}
  html.brief-open .brief__actions,html.brief-open .brief__close{display:none}
  html.brief-open .brief__print{display:block;margin-top:18px;font:500 8pt/1 var(--font-mono);color:var(--paper-muted)}}
+
+/* Yogic Insights Facebook card (same look as the Kharigai card) */
+.chart-grid>.igcard{grid-column:1/-1;margin:0}
+.igcard__ring--fb{background:conic-gradient(from 210deg,#1877f2,#5aa0ff,var(--accent),#1877f2)}
+.igcard__mono{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;border:3px solid var(--surface);background:linear-gradient(135deg,#1877f2,#0d4fb5);font:800 1.35rem/1 var(--font-display);letter-spacing:.02em;color:#fff}
+
+/* Visit cards right under each case heading (Yogic Insights, Keerthi, Kharigai) */
+.igcard--visit{margin:calc(-1*clamp(20px,3vw,44px)) 0 clamp(48px,6vw,88px);max-width:780px}
+.igcard__ring--yt{background:conic-gradient(from 210deg,#ff0033,#ff7a7a,var(--accent),#ff0033)}
+.igcard__mono--yt{background:linear-gradient(135deg,#ff0033,#b0001c)}
+.igcard__stats .badge{margin-left:6px}

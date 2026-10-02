@@ -22,6 +22,8 @@ GitHub Pages serves it as it is.
 | `data/yogic_insights.json` | Meta Graph API export of the Yogic Insights page, 2019 to 2021 |
 | `data/edited_videos.json` | Public YouTube counts for the 13 showcased edits |
 | `cv/` | CV as PDF (designed version and ATS version) |
+| `js/seq.js`, `assets/seq/` | Scroll animation of the hero photo (hands out of pockets, arms fold, smile). Frames load after the page; off with Motion: Off or data saver |
+| `v2/` | Version 2 of the site (motorsport style), same content |
 
 ## Updating numbers
 Edit the JSON files in `data/` and the matching figures in `index.html`. Every number on the page is sourced;

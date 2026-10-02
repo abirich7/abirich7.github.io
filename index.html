@@ -21,8 +21,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
-<link rel="preload" as="image" href="assets/img/abirich-portrait.webp" fetchpriority="high">
-<link rel="preload" as="image" href="assets/img/abirich-portrait-mask.png" crossorigin>
+<link rel="preload" as="image" href="assets/img/abirich-portrait.webp" imagesrcset="assets/img/abirich-portrait-600.webp 600w, assets/img/abirich-portrait.webp 939w" imagesizes="(max-width: 767px) 92vw, 46vw" fetchpriority="high">
 <link rel="stylesheet" href="css/tokens.css"> <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/hero.css">   <link rel="stylesheet" href="css/charts.css">
 <script type="module" src="js/main.js"></script>
@@ -39,7 +38,7 @@
     <span class="hdr-tc" aria-hidden="true" data-tc-out>00:00:00:00</span>
     <nav class="nav" aria-label="Primary">
       <ul>
-        <li><a href="#yogic" data-nav="yogic keerthi kharigai arkahub">Work</a></li>
+        <li><a href="#yogic" data-nav="yogic keerthi kharigai">Work</a></li>
         <li><a href="#yogic-charts" data-nav="">Growth data</a></li>
         <li><a href="#edits" data-nav="edits">Edits</a></li>
         <li><a href="#playbook" data-nav="playbook">How I work</a></li>
@@ -63,13 +62,14 @@
 
 <main id="main">
 
+  <div class="hero-pin">
   <section id="hero" class="hero" data-chapter="Intro" data-tc-label="INTRO">
     <div class="hero__stage" id="hero-stage">
       <div class="hero__light" aria-hidden="true"></div>
       <div class="hero__mega" aria-hidden="true"><span>1.18M</span></div>
       <canvas class="hero__gl" id="hero-gl" aria-hidden="true"></canvas>
       <figure class="hero__figure">
-        <img class="hero__photo" id="hero-photo" src="assets/img/abirich-portrait.webp"
+        <img class="hero__photo" id="hero-photo" src="assets/img/abirich-portrait.webp" srcset="assets/img/abirich-portrait-600.webp 600w, assets/img/abirich-portrait.webp 939w" sizes="(max-width: 767px) 92vw, 46vw"
              width="939" height="1674" fetchpriority="high" decoding="async"
              alt="Abirich Vaithiyalingam in a cream striped suit and white shirt. He stands in front of a grey background, with warm light behind him.">
       </figure>
@@ -94,6 +94,7 @@
     </div>
     <div class="hero__scrollcue" aria-hidden="true">SCROLL TO PLAY</div>
   </section>
+  </div>
 
   <section id="proof" class="section proof" data-chapter="Numbers" data-tc-label="NUMBERS">
     <div class="wrap">
@@ -153,6 +154,20 @@
         <p class="note-chip" data-reveal><span class="note-chip__i" aria-hidden="true">i</span>An independent, unofficial page. It shares short videos of Sadhguru's teachings. It is not linked to Sadhguru or Isha Foundation.</p>
         <p class="case__context" data-reveal>Started at 0 followers. Short videos about spirituality and wellness. I did every part myself.</p>
       </header>
+
+        <figure class="igcard igcard--fb igcard--visit" data-reveal>
+          <a class="igcard__body" href="https://www.facebook.com/share/19i1zduHcv/" target="_blank" rel="noopener" data-tilt>
+            <span class="igcard__ring igcard__ring--fb"><span class="igcard__mono" aria-hidden="true">YI</span></span>
+            <span class="igcard__main">
+              <span class="igcard__name">Yogic Insights</span>
+              <span class="igcard__handle">Facebook page · I started it</span>
+              <span class="igcard__stats"><b data-intl="1,181,776" data-indian="11,81,776">1,181,776</b> followers</span>
+              <span class="igcard__bio">Short videos of Sadhguru's teachings. An independent page. It is not linked to Sadhguru or Isha Foundation.</span>
+            </span>
+            <span class="igcard__cta">Visit page<span class="ext" aria-hidden="true"></span></span>
+          </a>
+          <figcaption class="chart__caption">Public Facebook page. Follower count from 27 Sep 2026. I grew it from zero.</figcaption>
+        </figure>
 
       <div class="case__grid">
         <div class="case__col case__col--challenge" data-reveal>
@@ -251,7 +266,7 @@
           <div class="receipts">
             <p class="receipts__label">Proof</p>
             <ul>
-              <li><a href="https://www.facebook.com/1686690976352496" target="_blank" rel="noopener">Visit the page (Facebook)<span class="ext" aria-hidden="true"></span></a> <span class="receipts__note">(opens Facebook, you may need to log in)</span></li>
+              <li><a href="https://www.facebook.com/share/19i1zduHcv/" target="_blank" rel="noopener">Visit the page (Facebook)<span class="ext" aria-hidden="true"></span></a> <span class="receipts__note">(opens Facebook, you may need to log in)</span></li>
               <li class="receipts__quote">"In an interview, I'm happy to show you my Meta Business Suite screen."</li>
             </ul>
           </div>
@@ -269,6 +284,20 @@
         <p class="case__hook" data-reveal>I led the editing and looked after social media for a big creator brand. We made Shorts, long videos and films with AI help.</p>
         <p class="role-line" data-reveal><span class="role-line__from">Senior Video Editor</span><span class="role-line__arrow" aria-hidden="true">→</span><span class="sr-only">then</span><span class="role-line__to">Head of Post-Production</span>, plus looking after social media. <span class="role-line__title">Title: Creative Lead, Head of Post-Production &amp; Social Media</span></p>
       </header>
+
+        <figure class="igcard igcard--yt igcard--visit" data-reveal>
+          <a class="igcard__body" href="https://www.youtube.com/@KeerthikaGovindhasamy" target="_blank" rel="noopener" data-tilt>
+            <span class="igcard__ring igcard__ring--yt"><span class="igcard__mono igcard__mono--yt" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" focusable="false"><path fill="#fff" d="M9 7.2v9.6l7.6-4.8z"/></svg></span></span>
+            <span class="igcard__main">
+              <span class="igcard__name">Keerthi</span>
+              <span class="igcard__handle">@KeerthikaGovindhasamy &middot; YouTube</span>
+              <span class="igcard__stats"><b data-intl="2.96M" data-indian="29.6 lakh">2.96M</b> subscribers <span class="badge">BRAND TOTAL</span></span>
+              <span class="igcard__bio">A creator brand. I was part of the core team. I led the editing and looked after social media. On Instagram, @keerthi has <span data-intl="909K" data-indian="9.09 lakh">909K</span> followers.</span>
+            </span>
+            <span class="igcard__cta">Visit channel<span class="ext" aria-hidden="true"></span></span>
+          </a>
+          <figcaption class="chart__caption">Public YouTube and Instagram counts, 27 Sep 2026. These numbers are for the whole brand, not just me.</figcaption>
+        </figure>
 
       <div class="case__grid">
         <div class="case__col case__col--challenge" data-reveal>
@@ -361,10 +390,75 @@
     </div>
   </section>
 
+  <section id="kharigai" class="section case case--compact" data-chapter="Kharigai" data-tc-label="KHARIGAI">
+    <div class="wrap">
+      <header class="case__head" data-num="03">
+        <p class="slate" aria-hidden="true"><span data-slate>SC 05 · KHARIGAI</span><span class="slate__tc" data-tc>00:00:00:00</span></p>
+        <div class="brandline" data-reveal>
+          <img class="brandmark" src="assets/brands/kharigai.jpg" width="150" height="150" loading="lazy" decoding="async" alt="Kharigai logo: white K on blue.">
+          <p class="kicker">03 · INSTAGRAM · 2020 TO 2023 · BRAND SIDE</p>
+        </div>
+        <h2 class="case__title" data-reveal>Kharigai: <em>brand and social media for an online workwear brand</em></h2>
+        <p class="case__hook" data-reveal>Work clothes for Indian women, sold online, straight to customers. My job: make the brand sound and look the same on Instagram.</p>
+        <p class="role-line" data-reveal><span class="role-line__to">Brand &amp; Social Media Lead</span></p>
+      </header>
+
+      <figure class="igcard igcard--visit" data-reveal>
+        <a class="igcard__body" href="https://www.instagram.com/kharigaii/" target="_blank" rel="noopener" data-tilt>
+          <span class="igcard__ring"><img src="assets/brands/kharigai.jpg" width="150" height="150" loading="lazy" decoding="async" alt=""></span>
+          <span class="igcard__main">
+            <span class="igcard__name">Kharigai <small>®</small></span>
+            <span class="igcard__handle">@kharigaii · Instagram</span>
+            <span class="igcard__stats"><b data-intl="40.1K" data-indian="40.1K">40.1K</b> followers</span>
+            <span class="igcard__bio">Workwear for Indian women. Show the world how smart you are. Shop at kharigai.com</span>
+          </span>
+          <span class="igcard__cta">View profile<span class="ext" aria-hidden="true"></span></span>
+        </a>
+        <figcaption class="chart__caption">Public Instagram profile, 27 Sep 2026. I looked after the brand and its social media from 2020 to 2023.</figcaption>
+      </figure>
+
+      <div class="case__grid">
+        <div class="case__col case__col--challenge" data-reveal>
+          <h3 class="col-h"><span>A</span>The challenge</h3>
+          <p>Kharigai sells work clothes for Indian women. It sells online, straight to customers. For a brand like this, Instagram is the shop window. The brand needed to sound and look the same in every post. It also needed new posts all the time.</p>
+        </div>
+        <div class="case__col case__col--did" data-reveal>
+          <h3 class="col-h"><span>B</span>What I did</h3>
+          <ul class="ticks">
+            <li>Set how the brand sounds and looks on Instagram.</li>
+            <li>Planned what to post and when.</li>
+            <li>Made posts about the products: Reels, photo shoots and carousels.</li>
+            <li>Wrote captions and did the daily work on the account.</li>
+          </ul>
+        </div>
+        <div class="case__col case__col--results">
+          <h3 class="col-h" data-reveal><span>C</span>Results</h3>
+          <ul class="rcards rcards--one">
+            <li class="rcard" data-tilt data-reveal><b>40.1K</b><span>Instagram followers today (public count, 27 Sep 2026)</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bring bring--row" data-reveal>
+        <div>
+          <p class="bring__label">What I can do for your brand</p>
+          <p class="bring__text">I know how to work for a brand that sells products. One voice, one look, and posts that show the product well.</p>
+        </div>
+        <div class="receipts">
+          <p class="receipts__label">Proof</p>
+          <ul>
+            <li><a href="https://www.kharigai.com/" target="_blank" rel="noopener">kharigai.com<span class="ext" aria-hidden="true"></span></a></li>
+            <li><a href="https://www.instagram.com/kharigaii/" target="_blank" rel="noopener">Instagram @kharigaii<span class="ext" aria-hidden="true"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="edits" class="section edits" data-chapter="Edit bay" data-tc-label="EDITS">
     <div class="wrap">
       <header class="sec-head">
-        <p class="slate" aria-hidden="true"><span data-slate>SC 05 · THE EDIT BAY</span><span class="slate__tc" data-tc>00:00:00:00</span></p>
+        <p class="slate" aria-hidden="true"><span data-slate>SC 06 · THE EDIT BAY</span><span class="slate__tc" data-tc>00:00:00:00</span></p>
         <p class="kicker" data-reveal>THE EDIT BAY</p>
         <h2 class="sec-title" data-reveal>13 edits. <em><span data-intl="11.7M" data-indian="1.17 crore">11.7M</span> views.</em></h2>
         <p class="sec-intro" data-reveal>Videos I edited for the Keerthi channel. Each card shows which part I edited. Long videos start playing where my part begins.</p>
@@ -551,117 +645,10 @@
     </div>
   </section>
 
-  <section id="kharigai" class="section case case--compact" data-chapter="Kharigai" data-tc-label="KHARIGAI">
-    <div class="wrap">
-      <header class="case__head" data-num="03">
-        <p class="slate" aria-hidden="true"><span data-slate>SC 06 · KHARIGAI</span><span class="slate__tc" data-tc>00:00:00:00</span></p>
-        <div class="brandline" data-reveal>
-          <img class="brandmark" src="assets/brands/kharigai.jpg" width="150" height="150" loading="lazy" decoding="async" alt="Kharigai logo: white K on blue.">
-          <p class="kicker">03 · INSTAGRAM · 2020 TO 2023 · BRAND SIDE</p>
-        </div>
-        <h2 class="case__title" data-reveal>Kharigai: <em>brand and social media for an online workwear brand</em></h2>
-        <p class="case__hook" data-reveal>Work clothes for Indian women, sold online, straight to customers. My job: make the brand sound and look the same on Instagram.</p>
-        <p class="role-line" data-reveal><span class="role-line__to">Brand &amp; Social Media Lead</span></p>
-      </header>
-
-      <div class="case__grid">
-        <div class="case__col case__col--challenge" data-reveal>
-          <h3 class="col-h"><span>A</span>The challenge</h3>
-          <p>Kharigai sells work clothes for Indian women. It sells online, straight to customers. For a brand like this, Instagram is the shop window. The brand needed to sound and look the same in every post. It also needed new posts all the time.</p>
-        </div>
-        <div class="case__col case__col--did" data-reveal>
-          <h3 class="col-h"><span>B</span>What I did</h3>
-          <ul class="ticks">
-            <li>Set how the brand sounds and looks on Instagram.</li>
-            <li>Planned what to post and when.</li>
-            <li>Made posts about the products: Reels, photo shoots and carousels.</li>
-            <li>Wrote captions and did the daily work on the account.</li>
-          </ul>
-        </div>
-        <div class="case__col case__col--results">
-          <h3 class="col-h" data-reveal><span>C</span>Results</h3>
-          <ul class="rcards rcards--one">
-            <li class="rcard" data-tilt data-reveal><b>40.1K</b><span>Instagram followers today (public count, 27 Sep 2026)</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <figure class="igcard" data-reveal>
-        <a class="igcard__body" href="https://www.instagram.com/kharigaii/" target="_blank" rel="noopener" data-tilt>
-          <span class="igcard__ring"><img src="assets/brands/kharigai.jpg" width="150" height="150" loading="lazy" decoding="async" alt=""></span>
-          <span class="igcard__main">
-            <span class="igcard__name">Kharigai <small>®</small></span>
-            <span class="igcard__handle">@kharigaii · Instagram</span>
-            <span class="igcard__stats"><b data-intl="40.1K" data-indian="40.1K">40.1K</b> followers</span>
-            <span class="igcard__bio">Workwear for Indian women. Show the world how smart you are. Shop at kharigai.com</span>
-          </span>
-          <span class="igcard__cta">View profile<span class="ext" aria-hidden="true"></span></span>
-        </a>
-        <figcaption class="chart__caption">Public Instagram profile, 27 Sep 2026. I looked after the brand and its social media from 2020 to 2023.</figcaption>
-      </figure>
-
-      <div class="bring bring--row" data-reveal>
-        <div>
-          <p class="bring__label">What I can do for your brand</p>
-          <p class="bring__text">I know how to work for a brand that sells products. One voice, one look, and posts that show the product well.</p>
-        </div>
-        <div class="receipts">
-          <p class="receipts__label">Proof</p>
-          <ul>
-            <li><a href="https://www.kharigai.com/" target="_blank" rel="noopener">kharigai.com<span class="ext" aria-hidden="true"></span></a></li>
-            <li><a href="https://www.instagram.com/kharigaii/" target="_blank" rel="noopener">Instagram @kharigaii<span class="ext" aria-hidden="true"></span></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="arkahub" class="section case case--compact case--now" data-chapter="Now" data-tc-label="NOW">
-    <div class="wrap">
-      <header class="case__head" data-num="04">
-        <p class="slate" aria-hidden="true"><span data-slate>SC 07 · NOW</span><span class="slate__tc" data-tc>00:00:00:00</span></p>
-        <p class="kicker" data-reveal>04 · NOW · SEP 2026 TO PRESENT</p>
-        <h2 class="case__title" data-reveal>Arkahub: <em>videos for a rooftop solar brand</em></h2>
-        <p class="case__hook" data-reveal>I just started. My job: make a big home decision easy to understand on video.</p>
-        <p class="role-line" data-reveal><span class="role-line__to">Senior Video Editor, Arkahub (Bengaluru).</span> Arkahub puts solar panels on the roofs of homes. It started in 2025 and is backed by investors. It works in Bengaluru, Hyderabad, Nagpur and Pune.</p>
-      </header>
-
-      <div class="case__grid">
-        <div class="case__col case__col--challenge" data-reveal>
-          <h3 class="col-h"><span>A</span>The challenge</h3>
-          <p>Rooftop solar is a big thing for a family to buy. People think hard before they buy it. The video must explain it simply and win their trust.</p>
-        </div>
-        <div class="case__col case__col--did" data-reveal>
-          <h3 class="col-h"><span>B</span>What I do</h3>
-          <ul class="ticks">
-            <li>Videos that explain the product.</li>
-            <li>Customer stories.</li>
-            <li>Edits made for Instagram and YouTube first.</li>
-          </ul>
-        </div>
-        <div class="case__col case__col--results" data-reveal>
-          <h3 class="col-h"><span>C</span>Results</h3>
-          <div class="live">
-            <p class="live__status"><span class="rec" aria-hidden="true"></span>STARTED SEP 2026</p>
-            <p class="live__text">It is too early for numbers. I will add them when I have real ones.</p>
-            <span class="live__bar" aria-hidden="true"></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="bring bring--row" data-reveal>
-        <div>
-          <p class="bring__label">What this job adds</p>
-          <p class="bring__text">Brand videos for a big purchase that needs trust. This adds to what I learned making videos for a big creator.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="playbook" class="section playbook" data-chapter="Playbook" data-tc-label="PLAYBOOK">
     <div class="wrap">
       <header class="sec-head">
-        <p class="slate" aria-hidden="true"><span data-slate>SC 08 · THE PLAYBOOK</span><span class="slate__tc" data-tc>00:00:00:00</span></p>
+        <p class="slate" aria-hidden="true"><span data-slate>SC 07 · THE PLAYBOOK</span><span class="slate__tc" data-tc>00:00:00:00</span></p>
         <p class="kicker" data-reveal>THE PLAYBOOK</p>
         <h2 class="sec-title" data-reveal>How I grow <em>an audience</em></h2>
         <p class="sec-intro" data-reveal>Six habits. My own numbers back up each one.</p>
@@ -710,7 +697,7 @@
   <section id="skills" class="section skills" data-chapter="Skills" data-tc-label="SKILLS">
     <div class="wrap">
       <header class="sec-head">
-        <p class="slate" aria-hidden="true"><span data-slate>SC 09 · SKILLS</span><span class="slate__tc" data-tc>00:00:00:00</span></p>
+        <p class="slate" aria-hidden="true"><span data-slate>SC 08 · SKILLS</span><span class="slate__tc" data-tc>00:00:00:00</span></p>
         <p class="kicker" data-reveal>SKILLS</p>
         <h2 class="sec-title" data-reveal>What I do, <em>with proof</em></h2>
         <p class="sec-intro" data-reveal>No skill bars. Each group links to work that proves it.</p>
@@ -739,7 +726,7 @@
     </div>
     <div class="wrap">
       <header class="sec-head">
-        <p class="slate" aria-hidden="true"><span data-slate>SC 10 · CONTACT</span><span class="slate__tc" data-tc>00:00:00:00</span></p>
+        <p class="slate" aria-hidden="true"><span data-slate>SC 09 · CONTACT</span><span class="slate__tc" data-tc>00:00:00:00</span></p>
         <p class="kicker" data-reveal>CONTACT</p>
         <h2 class="contact__title" data-reveal>Building a social team? <em>Let's talk.</em></h2>
         <p class="sec-intro" data-reveal>I'm looking for lead jobs in social media, content or creative work in India. Do you need one person who can make the plan and also make the videos? Write to me.</p>
@@ -778,7 +765,7 @@
       <p>Kharigai's name and logo belong to Kharigai.</p>
       <p>Sources: Meta Graph API data (Yogic Insights) and public YouTube and Instagram counts, all from 27 Sep 2026. Every number on this site has a source.</p>
     </div>
-    <p class="site-footer__line">© 2026 Abirich Vaithiyalingam · <a href="mailto:abirichcrown@gmail.com">abirichcrown@gmail.com</a> · Last updated 27 Sep 2026</p>
+    <p class="site-footer__line">© 2026 Abirich Vaithiyalingam · <a href="mailto:abirichcrown@gmail.com">abirichcrown@gmail.com</a> · Last updated 1 Oct 2026 · <a href="v2/">View version 2</a></p>
   </div>
 </footer>
 
@@ -860,7 +847,6 @@
       <li>I use AI tools: Runway, Kling AI and Google Flow. I finish the videos in Premiere Pro and After Effects.</li>
     </ol>
     <p><strong>Also:</strong> Brand and social media for Kharigai, a workwear brand that sells online, straight to customers (40.1K on Instagram today) · 7+ years · 200+ videos edited</p>
-    <p><strong>Now:</strong> Senior Video Editor at Arkahub, Bengaluru, since Sep 2026. Happy to talk.</p>
     <p><strong>Contact:</strong> <a href="mailto:abirichcrown@gmail.com">abirichcrown@gmail.com</a> · <a href="tel:+917904859661">+91 79048 59661</a> · <a href="https://abirich7.github.io/">abirich7.github.io</a></p>
     <p class="brief__foot">Every number has a source: Meta Graph API data and public YouTube and Instagram counts, 27 Sep 2026. Keerthi numbers are brand totals. Yogic Insights is independent and unofficial.</p>
     <div class="brief__actions">

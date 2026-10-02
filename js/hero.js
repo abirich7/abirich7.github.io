@@ -1,6 +1,7 @@
 // Hero enhancement. The hero is complete in HTML/CSS; this module only adds:
 //  1. pointer parallax: writes --px/--py (-1..1, lerped) on #hero-stage; depths live in hero.css
 //  2. offscreen pausing (.is-off on #hero) and tracker re-lock after the particle moment
+//  2b. the scroll-scrubbed photo sequence (shared js/seq.js, loaded after the page)
 //  3. "the audience assembles into the man": one raw-WebGL particle burst + reassembly
 //     (tier high + motion full only, once per session, REPLAY button, 3 s safety reveal).
 import { getMotion, getTier, motionAllowed, heavyMotionAllowed } from './state.js';
@@ -34,6 +35,7 @@ export function initHero() {
     }).observe(hero);
   }
   parallax(view);
+  sequence();
 
   addEventListener('motion:change', () => { if (running && !heavyMotionAllowed()) running.stop(true); });
   if (getTier() !== 'high' || !window.WebGLRenderingContext) return;
@@ -92,6 +94,21 @@ function parallax(view) {
   addEventListener('motion:change', () => {
     if (!motionAllowed()) { cancelAnimationFrame(raf); raf = 0; tx = ty = x = y = 0; put(); }
   });
+}
+
+/* ---------- 2b. Scroll sequence (js/seq.js): hands out of the pockets, arms fold, smile ---------- */
+// initHero already runs after load + idle. Any failure leaves the static photo. The sequence canvas stays hidden
+// (CSS) while the particle moment owns the photo, and its frames wait for that moment to finish.
+function sequence() {
+  import('./seq.js').then((m) => m.initSequence({
+    hero,
+    pin: hero.closest('.hero-pin'),
+    figure: stage.querySelector('.hero__figure'),
+    photo,
+    keepTop: hero.querySelector('.hero__copy .eyebrow'),
+    keepBottom: hero.querySelector('.hero__roles'),
+    hold: () => stage.classList.contains('is-gl') || stage.classList.contains('is-assembling'),
+  })).catch(() => {});
 }
 
 /* ---------- 3. Replay affordance (high tier only) ---------- */

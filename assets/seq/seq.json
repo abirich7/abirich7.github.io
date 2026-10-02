@@ -1,0 +1,18 @@
+{
+    "source":  "Gemini (Veo) video, 2.0s to 5.0s, chroma-keyed to transparent WebP, 2 Oct 2026",
+    "desktop":  {
+                    "dir":  "d",
+                    "count":  37,
+                    "width":  720,
+                    "height":  1280,
+                    "pattern":  "f{nnn}.webp"
+                },
+    "mobile":  {
+                   "dir":  "m",
+                   "count":  25,
+                   "width":  600,
+                   "height":  1067,
+                   "pattern":  "f{nnn}.webp"
+               },
+    "notes":  "Frame 0 is the start pose (hands in pockets, matches the hero photo). Last frame is arms folded with a soft smile. Frames share the hero photo box (9:16)."
+}

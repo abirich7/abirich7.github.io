@@ -1,0 +1,124 @@
+/* Version 2 tokens ("Pit wall"): motorsport-profile look. Same variable names as v1 so the shared
+   ../css/charts.css and ../js/charts.js restyle automatically. Owned by the lead; builders consume. */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces: deep maroon fading into charcoal */
+  --bg: #15161a;
+  --bg-2: #1a1b20;
+  --maroon: #4a1a1f;
+  --maroon-2: #6b2228;
+  --charcoal: #1d2027;
+  --surface: #1e1f25;
+  --surface-2: #25262d;
+  --surface-3: #2e2f37;
+  --glass: rgba(255, 255, 255, 0.045);
+  --glass-2: rgba(255, 255, 255, 0.07);
+  --line: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.14);
+  --line-3: rgba(255, 255, 255, 0.26);
+
+  /* Text */
+  --text: #ffffff;
+  --text-2: #d6d2d2;
+  --muted: #a9a3a4;
+  --faint: #7c7677;
+
+  /* Accents: number yellow + racing red */
+  --accent: #f5c518;
+  --accent-2: #ffd94d;
+  --accent-ink: #1a1400;
+  --accent-glow: rgba(245, 197, 24, 0.35);
+  --red: #e10600;
+  --red-2: #ff3b30;
+  --red-glow: rgba(225, 6, 0, 0.45);
+  --tally: #e10600;
+
+  /* Data palette (shared charts read these) */
+  --data-1: #f5c518;               /* primary series, Shorts */
+  --data-2: #ffffff;               /* secondary series */
+  --data-3: #ff4d4d;               /* contrast series, Long-form, posts line */
+  --data-4: #9aa4b5;               /* AI visuals (cool grey-blue) */
+  --data-grid: rgba(255, 255, 255, 0.07);
+  --data-axis: rgba(255, 255, 255, 0.5);
+  --seq-0: #22232a;
+  --seq-1: #3b2a1c;
+  --seq-2: #6e4e12;
+  --seq-3: #a8790f;
+  --seq-4: #e0a915;
+  --seq-5: #ffe27a;
+
+  --badge-bg: rgba(255, 255, 255, 0.1);
+  --badge-fg: #ffffff;
+
+  /* Paper (Hire brief, print): clean white card like the sample's sign-in box */
+  --paper: #ffffff;
+  --paper-ink: #111216;
+  --paper-muted: #5f6068;
+
+  /* Type: two different families, as requested */
+  --font-display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;   /* headings, names, big numbers */
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;  /* paragraphs, UI */
+  --font-mono: "Inter Tight", "Helvetica Neue", Arial, sans-serif;     /* chart labels: tabular display face */
+
+  --fs-hero-name: clamp(3.2rem, 1.2rem + 6.4vw, 8.2rem);
+  --fs-hero-tag: clamp(2rem, 1.2rem + 2.6vw, 3.9rem);
+  --fs-mega: clamp(14rem, 6rem + 30vw, 40rem);
+  --fs-h2: clamp(2.3rem, 1.4rem + 3.4vw, 4.8rem);
+  --fs-h3: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
+  --fs-stat: clamp(2.6rem, 1.6rem + 3.6vw, 5rem);
+  --fs-lead: clamp(1.18rem, 1.02rem + 0.55vw, 1.45rem);
+  --fs-body: clamp(1.0625rem, 1rem + 0.25vw, 1.15rem);
+  --fs-small: clamp(0.97rem, 0.94rem + 0.12vw, 1.02rem);
+  --fs-micro: 0.82rem;
+  --fs-label: 0.86rem;             /* small grey labels like "Season Points" */
+
+  /* Space, radius, layout: generous and calm */
+  --gutter: clamp(20px, 5vw, 72px);
+  --maxw: 1280px;
+  --section-y: clamp(96px, 13vw, 200px);
+  --stack-1: 8px;
+  --stack-2: 16px;
+  --stack-3: 24px;
+  --stack-4: 40px;
+  --stack-5: 64px;
+  --stack-6: 96px;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+
+  --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 18px 40px -20px rgba(0, 0, 0, 0.7);
+  --shadow-2: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 40px 90px -40px rgba(0, 0, 0, 0.85);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 160ms;
+  --dur-2: 320ms;
+  --dur-3: 640ms;
+  --dur-4: 1100ms;
+
+  --z-bg: 0;
+  --z-hero-photo: 2;
+  --z-hero-fg: 3;
+  --z-content: 5;
+  --z-header: 50;
+  --z-tooltip: 60;
+  --z-dialog: 100;
+  --z-loader: 200;
+
+  --header-h: 76px;
+  --dock-h: 0px;                   /* v2 has no timeline dock */
+}
+
+@media (max-width: 767px) {
+  :root { --header-h: 64px; }
+}
+
+html[data-motion="off"] *, html[data-motion="off"] *::before, html[data-motion="off"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
