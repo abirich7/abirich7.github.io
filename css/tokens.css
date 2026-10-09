@@ -1,115 +1,78 @@
-/* Design tokens shared by every stylesheet. Owned by the lead; builders consume, never redefine. */
+/* Design tokens: palette, type, space. site.css reads these; change the look here. */
 :root {
   color-scheme: dark;
 
   /* Surfaces: warm graphite taken from the studio backdrop in the portrait */
   --bg: #0b0a09;
   --bg-2: #100f0d;
-  --surface: #171513;
-  --surface-2: #1f1c19;
+  --surface: #151311;
+  --surface-2: #1d1a17;
   --surface-3: #2a2622;
-  --line: rgba(243, 236, 226, 0.10);
-  --line-2: rgba(243, 236, 226, 0.18);
-  --line-3: rgba(243, 236, 226, 0.32);
+  --line: rgba(243, 236, 226, 0.09);
+  --line-2: rgba(243, 236, 226, 0.16);
+  --line-3: rgba(243, 236, 226, 0.30);
 
   /* Text: cream from the suit */
   --text: #f6f0e7;
-  --text-2: #ddd5ca;               /* body copy: brighter for easy reading */
-  --muted: #aca296;
-  --faint: #7f766c;
+  --text-2: #d9d1c5;
+  --muted: #a89e92;
+  --faint: #908779;
 
   /* Accent: the warm rim light in the photo */
   --accent: #ff7a2f;
   --accent-2: #ffb36b;
-  --accent-ink: #1a0e05;           /* text on accent fills */
-  --accent-glow: rgba(255, 122, 47, 0.35);
-  --tally: #ff3b2f;                /* REC / playhead red */
+  --accent-ink: #1a0e05;
+  --accent-soft: rgba(255, 122, 47, 0.12);
+  --accent-line: rgba(255, 122, 47, 0.34);
 
-  /* Data palette (categorical). Amber, cream, teal, violet read clearly on --bg */
-  --data-1: #ff7a2f;               /* primary series, Shorts */
-  --data-2: #f3ece2;               /* secondary series */
-  --data-3: #4fd1c5;               /* contrast series, Long-form, cadence line */
-  --data-4: #a594ff;               /* AI visuals */
+  /* Team / brand-total marker (numbers that belong to a whole channel, not to Abirich alone) */
+  --team-bg: rgba(79, 209, 197, 0.10);
+  --team-fg: #84e1d7;
+  --team-line: rgba(79, 209, 197, 0.28);
+
+  /* Chart */
   --data-grid: rgba(243, 236, 226, 0.08);
-  --data-axis: rgba(243, 236, 226, 0.45);
-  /* Sequential ramp for heatmaps (low to high) */
-  --seq-0: #1f1c19;
-  --seq-1: #4a2a16;
-  --seq-2: #8a3f17;
-  --seq-3: #d1591d;
-  --seq-4: #ff9a52;
-  --seq-5: #ffd3a6;
-
-  /* Brand-total badge (numbers that belong to the Keerthi brand, not solely to Abirich) */
-  --badge-bg: rgba(79, 209, 197, 0.12);
-  --badge-fg: #7fe3d9;
-
-  /* Paper (Hire brief, print) */
-  --paper: #f6f1e8;
-  --paper-ink: #16130f;
-  --paper-muted: #6d655b;
+  --data-axis: rgba(243, 236, 226, 0.22);
 
   /* Type */
   --font-display: "Bricolage Grotesque", "Geist", system-ui, sans-serif;
   --font-body: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
 
-  --fs-hero: clamp(2.6rem, 1.2rem + 6.2vw, 7.2rem);
-  --fs-mega: clamp(7rem, 2rem + 24vw, 26rem);     /* giant numerals behind the portrait */
-  --fs-h2: clamp(2rem, 1.2rem + 3.4vw, 4.4rem);
-  --fs-h3: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
-  --fs-stat: clamp(2.3rem, 1.5rem + 3.2vw, 4.1rem);
-  --fs-lead: clamp(1.18rem, 1.02rem + 0.55vw, 1.45rem);
-  --fs-body: clamp(1.0625rem, 1rem + 0.25vw, 1.15rem);
-  --fs-small: clamp(0.97rem, 0.94rem + 0.12vw, 1.02rem);
-  --fs-micro: 0.82rem;             /* mono labels, timecode, chips */
+  --fs-hero: clamp(2.4rem, 1.3rem + 4.2vw, 3.4rem);
+  --fs-h2: clamp(1.85rem, 1.3rem + 2vw, 2.9rem);
+  --fs-h3: clamp(1.4rem, 1.12rem + 1vw, 2rem);
+  --fs-stat: clamp(1.9rem, 1.3rem + 1.3vw, 2.45rem);
+  --fs-tile: clamp(1.6rem, 1.25rem + 1vw, 2.1rem);
+  --fs-lead: clamp(1.06rem, 0.98rem + 0.35vw, 1.22rem);
+  --fs-body: 1.0625rem;
+  --fs-micro: 0.75rem;
 
   /* Space, radius, layout */
-  --gutter: clamp(16px, 4vw, 56px);
-  --maxw: 1320px;
-  --section-y: clamp(88px, 12vw, 180px);
-  --r-sm: 8px;
-  --r-md: 14px;
-  --r-lg: 22px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --maxw: 1240px;
+  --section-y: clamp(52px, 6.4vw, 88px);
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 20px;
   --r-pill: 999px;
 
   /* Elevation */
-  --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 10px 30px -12px rgba(0, 0, 0, 0.6);
-  --shadow-2: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+  --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.035) inset, 0 12px 32px -16px rgba(0, 0, 0, 0.7);
+  --shadow-2: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 30px 80px -30px rgba(0, 0, 0, 0.85);
 
   /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-cut: steps(1, end);
   --dur-1: 160ms;
   --dur-2: 320ms;
-  --dur-3: 640ms;
-  --dur-4: 1100ms;
+  --dur-3: 700ms;
 
-  /* Layers */
-  --z-bg: 0;
-  --z-hero-gl: 1;
-  --z-hero-photo: 2;
-  --z-hero-fg: 3;
-  --z-content: 5;
+  /* Layers and fixed chrome */
   --z-header: 50;
-  --z-dock: 50;
-  --z-tooltip: 60;
   --z-dialog: 100;
-
-  /* Fixed chrome heights (JS and CSS both read these) */
   --header-h: 64px;
-  --dock-h: 58px;
 }
 
 @media (max-width: 767px) {
-  :root { --header-h: 56px; --dock-h: 0px; }
-}
-
-/* Motion levels: html[data-motion="full" | "calm" | "off"], set by js/state.js */
-html[data-motion="off"] *, html[data-motion="off"] *::before, html[data-motion="off"] *::after {
-  animation-duration: 0.001ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.001ms !important;
-  scroll-behavior: auto !important;
+  :root { --header-h: 56px; }
 }
