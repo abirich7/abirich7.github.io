@@ -1,0 +1,103 @@
+{
+  "asOf": "2026-10-09",
+  "source": "Public YouTube, Instagram and Facebook counts fetched 9 Oct 2026. Yogic Insights followers from the Meta Graph API export of 27 Sep 2026 (the page needs a login to view).",
+  "order": ["yogic", "keerthi", "kootansoru", "kharigai", "rajaram"],
+  "totals": {
+    "channels": 5,
+    "followersAllPlatforms": 7655819,
+    "followersLabel": "7.6M+",
+    "youtubeSubscribers": 3645630,
+    "facebookFollowers": 2801189,
+    "instagramFollowers": 1209000,
+    "viewsCombined": 1750130304,
+    "viewsLabel": "1.7B+",
+    "viewsNote": "YouTube lifetime views of Keerthi, Kootan Soru and Dr. RRP cardio (1,662,667,401) plus Yogic Insights unique-video views (87,462,903). Channel totals, team work.",
+    "yearsInField": "7+",
+    "startYear": 2019
+  },
+  "channels": {
+    "yogic": {
+      "name": "Yogic Insights",
+      "relationship": "owned",
+      "role": "Founder & Content Strategist",
+      "period": "May 2019 – Dec 2021",
+      "niche": "Short videos of Sadhguru's teachings (independent, unofficial page)",
+      "platforms": [
+        { "platform": "facebook", "handle": "Yogic Insights", "url": "https://www.facebook.com/1686690976352496", "followers": 1181776, "label": "1.18M followers" }
+      ],
+      "headline": "Built from 0 to 1.18M followers",
+      "keyNumbers": ["87M+ views on 149 unique videos", "21 videos past 1M", "Median 268K views per video"],
+      "logo": null,
+      "note": "Independent, unofficial page. Not affiliated with Sadhguru or Isha Foundation."
+    },
+    "keerthi": {
+      "name": "Keerthi",
+      "relationship": "core team",
+      "role": "Creative Lead: Head of Post-Production & Social Media",
+      "period": "2023 – Jul 2026",
+      "niche": "Creator brand: culture, travel and documentary storytelling (Keerthika Govindhasamy)",
+      "platforms": [
+        { "platform": "youtube", "handle": "@KeerthikaGovindhasamy", "url": "https://www.youtube.com/@KeerthikaGovindhasamy", "followers": 2970000, "label": "2.97M subscribers", "views": 1454032767, "videos": 548, "joined": "2022-08-05" },
+        { "platform": "instagram", "handle": "@keerthi", "url": "https://www.instagram.com/keerthi/", "followers": 916000, "label": "916K followers" }
+      ],
+      "headline": "Core team of a 2.97M-subscriber creator brand",
+      "keyNumbers": ["1.45B lifetime YouTube views (brand total)", "11.8M views on 13 showcased edits", "5 edits past 1M"],
+      "logo": "https://yt3.googleusercontent.com/UB56Rc0nz0dPmdpfCPUirAeHB5jl9nsxzFuVbOp1rzVMvvcYrsC_Q4Ac-nPRxLWYfQcFgvbA=s176-c-k-c0x00ffffff-no-rj",
+      "note": "Brand totals. The channel started in Aug 2022, before Abirich joined."
+    },
+    "kootansoru": {
+      "name": "Kootan Soru",
+      "relationship": "worked",
+      "role": "Content Strategist",
+      "period": "Aug 2024 – Present",
+      "startedWith": "The Life of Dairy EP 1 (21 Aug 2024)",
+      "niche": "Tamil village cooking and traditional food (Salem). Facebook page name: Camp Foods",
+      "platforms": [
+        { "platform": "youtube", "handle": "@KootanSoru", "url": "https://www.youtube.com/@KootanSoru", "followers": 670000, "label": "670K subscribers", "views": 208447591, "videos": 309, "joined": "2020-01-04" },
+        { "platform": "facebook", "handle": "Camp Foods", "url": "https://www.facebook.com/campsfood", "followers": 1619413, "label": "1.62M followers" },
+        { "platform": "instagram", "handle": "@kootansoru_", "url": "https://www.instagram.com/kootansoru_/", "followers": 253000, "label": "253K followers" }
+      ],
+      "headline": "Content strategy for a 2.5M-follower food brand",
+      "keyNumbers": ["119.5M YouTube views on 109 uploads since Aug 2024", "28 videos past 1M", "Top Short: 10.4M views"],
+      "logo": "https://yt3.googleusercontent.com/fFQYzwVF4BdHTHtYJpPPUbCJRCWLYEdF26s3ssOw4L9LJ1jhflk8WtSIbJFMqhvOlbvEXqwb=s176-c-k-c0x00ffffff-no-rj",
+      "note": "Channel totals (team work). The channel started in Jan 2020, before Abirich joined. Facebook and Instagram are lifetime totals."
+    },
+    "kharigai": {
+      "name": "Kharigai",
+      "relationship": "worked",
+      "role": "Co-founder, Brand & Social Media",
+      "period": "2020 – 2023",
+      "niche": "D2C workwear brand for Indian women (kharigai.com)",
+      "platforms": [
+        { "platform": "instagram", "handle": "@kharigaii", "url": "https://www.instagram.com/kharigaii/", "followers": 40000, "label": "40K followers" }
+      ],
+      "website": "https://www.kharigai.com/",
+      "headline": "Brand voice and Instagram for a D2C workwear label",
+      "keyNumbers": ["40K Instagram followers today"],
+      "logo": "assets/brands/kharigai.jpg",
+      "note": "Follower count today; the 2020–2023 count is not available."
+    },
+    "rajaram": {
+      "name": "Dr. Rajaram Prasad",
+      "channelTitle": "Dr. RRP cardio",
+      "relationship": "worked",
+      "role": "Podcast Producer & Editor",
+      "period": "Dec 2024 – Feb 2025",
+      "niche": "Health podcast on the YouTube channel of Dr. Rajaram Prasad, MD, DM, cardiologist, Salem",
+      "platforms": [
+        { "platform": "youtube", "handle": "@dr.rajaramprasad_cardiologist", "url": "https://www.youtube.com/@dr.rajaramprasad_cardiologist", "followers": 5630, "label": "5.63K subscribers", "views": 187043, "videos": 94, "joined": "2021-12-07" }
+      ],
+      "headline": "Produced and edited 5 podcast episodes in 3 months",
+      "keyNumbers": ["5 podcast episodes", "3 months: Dec 2024 – Feb 2025"],
+      "logo": "https://yt3.googleusercontent.com/FrSvdWFMaoEag5X7zNRmUMzhQi-_n8DbdYLWRwTWNMX0KfKpz6oIDOBVchO3pImFnYB4Xd0PNw=s176-c-k-c0x00ffffff-no-rj",
+      "note": "Do not name specific episodes until Abirich confirms which 5 he worked on."
+    }
+  },
+  "current": {
+    "name": "Arkahub",
+    "role": "Senior Video Editor",
+    "period": "Sep 2026 – Present",
+    "place": "Bengaluru",
+    "line": "Brand video for a rooftop solar company."
+  }
+}

@@ -1,43 +1,45 @@
 {
-  "source": "YouTube watch pages, fetched 27 Sep 2026. Views are lifetime public counts; likes are approximate public counts.",
+  "source": "YouTube watch pages. Views fetched 9 Oct 2026: public counts as YouTube shows them, so rounded to 3 significant figures (viewsLabel is the shown value). Likes are approximate public counts from the 27 Sep 2026 fetch.",
+  "asOf": "2026-10-09",
   "channel": {
     "name": "Keerthi",
     "creator": "Keerthika Govindhasamy",
     "handle": "@KeerthikaGovindhasamy",
     "url": "https://www.youtube.com/@KeerthikaGovindhasamy",
-    "subscribers": "2.96M",
-    "subscribersNumeric": 2960000,
-    "lifetimeViews": 1441699556,
-    "videos": 543,
+    "subscribers": "2.97M",
+    "subscribersNumeric": 2970000,
+    "lifetimeViews": 1454032767,
+    "videos": 548,
     "joined": "2022-08-05",
     "instagramHandle": "@keerthi",
     "instagramUrl": "https://www.instagram.com/keerthi/",
-    "instagramFollowers": "909K",
-    "instagramFollowersNumeric": 909000
+    "instagramFollowers": "916K",
+    "instagramFollowersNumeric": 916000
   },
   "shortForm": [
-    { "id": "o-FFtSEOgU4", "title": "Hindu-Muslim Unity in Madurai", "topic": "Culture & community", "published": "2026-05-03", "seconds": 60, "views": 361042, "likes": 12685, "credit": "Full edit" },
-    { "id": "UgSwfoz322E", "title": "The New Boss of Our Office", "topic": "Life at the studio", "published": "2026-07-26", "seconds": 59, "views": 1963336, "likes": 63274, "credit": "Full edit" },
-    { "id": "N3KRmYD8rFI", "title": "Nobody Expected This From Vijay", "topic": "People & culture", "published": "2026-06-29", "seconds": 71, "views": 1260740, "likes": 51988, "credit": "Full edit" },
-    { "id": "dFtq6QlcOJU", "title": "Inside the 'Mini Iran' of India", "topic": "Travel & discovery", "published": "2026-03-16", "seconds": 62, "views": 542641, "likes": 12608, "credit": "Full edit" },
-    { "id": "wSLWpX5PGvU", "title": "Took My Family to Mumbai", "topic": "Personal storytelling", "published": "2026-04-28", "seconds": 62, "views": 2622527, "likes": 72468, "credit": "Full edit" },
-    { "id": "vZjf176ZvZw", "title": "Reel vs Real: Dhurandhar", "topic": "Film & conversation", "published": "2026-04-07", "seconds": 68, "views": 227566, "likes": 8113, "credit": "Full edit" }
+    { "id": "o-FFtSEOgU4", "title": "Hindu-Muslim Unity in Madurai", "topic": "Culture & community", "published": "2026-05-03", "seconds": 60, "views": 362000, "viewsLabel": "362K", "likes": 12685, "credit": "Full edit" },
+    { "id": "UgSwfoz322E", "title": "The New Boss of Our Office", "topic": "Life at the studio", "published": "2026-07-26", "seconds": 59, "views": 1970000, "viewsLabel": "1.97M", "likes": 63274, "credit": "Full edit" },
+    { "id": "N3KRmYD8rFI", "title": "Nobody Expected This From Vijay", "topic": "People & culture", "published": "2026-06-29", "seconds": 71, "views": 1260000, "viewsLabel": "1.26M", "likes": 51988, "credit": "Full edit" },
+    { "id": "dFtq6QlcOJU", "title": "Inside the 'Mini Iran' of India", "topic": "Travel & discovery", "published": "2026-03-16", "seconds": 62, "views": 543000, "viewsLabel": "543K", "likes": 12608, "credit": "Full edit" },
+    { "id": "wSLWpX5PGvU", "title": "Took My Family to Mumbai", "topic": "Personal storytelling", "published": "2026-04-28", "seconds": 62, "views": 2630000, "viewsLabel": "2.63M", "likes": 72468, "credit": "Full edit" },
+    { "id": "vZjf176ZvZw", "title": "Reel vs Real: Dhurandhar", "topic": "Film & conversation", "published": "2026-04-07", "seconds": 68, "views": 228000, "viewsLabel": "228K", "likes": 8113, "credit": "Full edit" }
   ],
   "longForm": [
-    { "id": "Bs2hh_mE7zs", "start": 900, "title": "Why Telugu Films Are Like This?", "topic": "Cinema & culture", "published": "2026-06-20", "seconds": 1315, "views": 557482, "likes": 15527, "credit": "Edited 15:00 to end" },
-    { "id": "pBv2bnPbAkQ", "start": 0, "title": "Understanding Kerala's Beef Culture", "topic": "Food & culture", "published": "2026-02-26", "seconds": 957, "views": 1095292, "likes": 25993, "credit": "Edited the full video" },
-    { "id": "sLCmsnxUILE", "start": 900, "title": "I Investigated the Taj Mahal Controversy", "topic": "History & investigation", "published": "2025-11-07", "seconds": 1403, "views": 774236, "likes": 17500, "credit": "Edited 15:00 to end" },
-    { "id": "XVHnvPxSHa0", "start": 420, "title": "Why South Indians Are Angry at Bollywood", "topic": "Cinema & identity", "published": "2025-09-05", "seconds": 682, "views": 1680479, "likes": 42531, "credit": "Edited 7:00 to end" }
+    { "id": "Bs2hh_mE7zs", "start": 900, "title": "Why Telugu Films Are Like This?", "topic": "Cinema & culture", "published": "2026-06-20", "seconds": 1315, "views": 582000, "viewsLabel": "582K", "likes": 15527, "credit": "Edited 15:00 to end" },
+    { "id": "pBv2bnPbAkQ", "start": 0, "title": "Understanding Kerala's Beef Culture", "topic": "Food & culture", "published": "2026-02-26", "seconds": 957, "views": 1110000, "viewsLabel": "1.11M", "likes": 25993, "credit": "Full edit" },
+    { "id": "sLCmsnxUILE", "start": 900, "title": "I Investigated the Taj Mahal Controversy", "topic": "History & investigation", "published": "2025-11-07", "seconds": 1403, "views": 801000, "viewsLabel": "801K", "likes": 17500, "credit": "Edited 15:00 to end" },
+    { "id": "XVHnvPxSHa0", "start": 420, "title": "Why South Indians Are Angry at Bollywood", "topic": "Cinema & identity", "published": "2025-09-05", "seconds": 682, "views": 1700000, "viewsLabel": "1.70M", "likes": 42531, "credit": "Edited 7:00 to end" }
   ],
   "aiVisuals": [
-    { "id": "rPrJmcNbTEM", "start": 79, "title": "I Compared India & America's Middle Class", "topic": "AI POV & B-roll", "published": "2026-07-04", "seconds": 1591, "views": 383535, "likes": 6838, "credit": "Approx. 60% AI-generated POV shots and B-roll" },
-    { "id": "SD7wUD7LDj4", "start": 0, "title": "Harsh Reality of the Middle-Class Trap in India", "topic": "AI visual storytelling", "published": "2026-04-09", "seconds": 887, "views": 116133, "likes": 3739, "credit": "Opening minute and most B-roll AI-generated" },
-    { "id": "q62EvhFHC58", "start": 0, "title": "Dumbest Robbery Ever in the History of India", "topic": "AI-generated B-roll", "published": "2025-10-05", "seconds": 659, "views": 120470, "likes": 1976, "credit": "All B-roll AI-generated" }
+    { "id": "rPrJmcNbTEM", "start": 79, "title": "I Compared India & America's Middle Class", "topic": "AI POV & B-roll", "published": "2026-07-04", "seconds": 1591, "views": 401000, "viewsLabel": "401K", "likes": 6838, "credit": "About 60% of POV shots and B-roll made with AI" },
+    { "id": "SD7wUD7LDj4", "start": 0, "title": "Harsh Reality of the Middle-Class Trap in India", "topic": "AI visual storytelling", "published": "2026-04-09", "seconds": 887, "views": 118000, "viewsLabel": "118K", "likes": 3739, "credit": "First minute and most B-roll made with AI" },
+    { "id": "q62EvhFHC58", "start": 0, "title": "Dumbest Robbery Ever in the History of India", "topic": "AI-generated B-roll", "published": "2025-10-05", "seconds": 659, "views": 122000, "viewsLabel": "122K", "likes": 1976, "credit": "All B-roll made with AI" }
   ],
   "aiTools": ["Runway", "Kling AI", "Google Flow", "Pika"],
   "totals": {
-    "showcasedTenViews": 11085341,
-    "allThirteenViews": 11705479,
-    "note": "Sum of public views on the 10 short and long-form showcase videos, and on all 13 including AI visuals. Some long-form videos were partial edits (see credit)."
+    "allThirteenViews": 11840000,
+    "allThirteenLabel": "11.8M",
+    "past1M": 5,
+    "note": "11.84M views on all 13 edits, 9 Oct 2026 (FACTS.md). Some long-form videos were partial edits (see credit). The site shows 11.8M."
   }
 }

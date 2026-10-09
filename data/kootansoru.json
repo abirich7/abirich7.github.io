@@ -1,0 +1,50 @@
+{
+  "source": "YouTube watch pages for every Kootan Soru upload, fetched 9 Oct 2026. Views and likes are lifetime public counts.",
+  "channel": { "name": "Kootan Soru", "handle": "@KootanSoru", "url": "https://www.youtube.com/@KootanSoru", "subscribers": 670000, "lifetimeViews": 208447591, "videos": 309, "joined": "2020-01-04" },
+  "credited": {
+    "from": "2024-08-21",
+    "to": "2026-09-18",
+    "rule": "Uploads from 21 Aug 2024 (The Life of Dairy EP 1, when Abirich started as Content Strategist) to the latest upload.",
+    "uploads": 109,
+    "views": 119495203,
+    "likes": 2855972,
+    "medianViews": 314851,
+    "past100K": 78,
+    "past1M": 28,
+    "past5M": 6,
+    "shorts": { "rule": "3 minutes or less", "uploads": 62, "views": 111497312, "medianViews": 745074, "past1M": 26 },
+    "longForm": { "uploads": 47, "views": 7997891, "medianViews": 60619, "past1M": 2 },
+    "byYear": {
+      "2024": { "uploads": 36, "views": 51017163, "past1M": 13, "note": "21 Aug to 31 Dec only" },
+      "2025": { "uploads": 54, "views": 44672776, "past1M": 9 },
+      "2026": { "uploads": 19, "views": 23805264, "past1M": 6, "note": "1 Jan to 18 Sep" }
+    }
+  },
+  "top": [
+    { "id": "TipEROgUW1c", "published": "2024-08-21", "seconds": 60, "views": 10429698, "likes": 423321, "title": "The Life of Dairy! New Born Calf | EP 1 (Short)", "short": true },
+    { "id": "4xYgty1LMas", "published": "2026-03-11", "seconds": 52, "views": 9416957, "likes": 106794, "title": "Thengai Therattipal – Traditional Coconut Sweet", "short": true },
+    { "id": "z77BIrtuuHo", "published": "2025-04-28", "seconds": 58, "views": 9276325, "likes": 164427, "title": "Pure Village Food – Ragi Balls & Spicy Dry Fish Gravy", "short": true },
+    { "id": "hU1GaP3WEHg", "published": "2024-11-30", "seconds": 59, "views": 7753810, "likes": 204230, "title": "Traditional Karupatti Coffee | Palm Jaggery Coffee", "short": true },
+    { "id": "VbmWrGx6NVI", "published": "2024-10-04", "seconds": 54, "views": 5228278, "likes": 167558, "title": "Crispy Nenthram Chips | Kerala Banana Chips", "short": true },
+    { "id": "-5mB1wLR5g4", "published": "2025-06-22", "seconds": 71, "views": 5126154, "likes": 81042, "title": "Hot & Spicy Kadai Chicken", "short": true },
+    { "id": "jwdCuR2iaes", "published": "2024-11-06", "seconds": 59, "views": 4772372, "likes": 130219, "title": "Instant Jangri Recipe", "short": true },
+    { "id": "-C-O8MVDA3k", "published": "2026-02-25", "seconds": 98, "views": 4330274, "likes": 70638, "title": "Almond Burfi Recipe", "short": true },
+    { "id": "5NMQNXgtrGc", "published": "2024-11-26", "seconds": 58, "views": 3921644, "likes": 141270, "title": "Village Style Country Chicken Biryani", "short": true },
+    { "id": "EWI1XRV_CYM", "published": "2025-04-11", "seconds": 59, "views": 3828393, "likes": 49111, "title": "Coconut Therattipal in Traditional Way", "short": true },
+    { "id": "eZNepxZbi_w", "published": "2025-04-03", "seconds": 59, "views": 3551879, "likes": 42922, "title": "Naatu Style Mutton Blood & Boti Fry", "short": true },
+    { "id": "Lr1WbysgIlg", "published": "2025-03-05", "seconds": 56, "views": 2970523, "likes": 52946, "title": "Authentic South Indian Sambar", "short": true }
+  ],
+  "lifeOfSeries": {
+    "note": "Long-form village-life series on the channel during this period. Each episode follows one ingredient from farm to kitchen.",
+    "episodes": [
+      { "id": "MZ2U5jytZ04", "published": "2024-08-21", "seconds": 890, "views": 501060, "title": "The Life of Dairy! EP 1" },
+      { "id": "ymVd85sm0Ic", "published": "2024-11-20", "seconds": 887, "views": 1253556, "title": "The Life of Banana! EP 1" },
+      { "id": "Cq0i97GNOV0", "published": "2025-02-17", "seconds": 520, "views": 314851, "title": "The Life of Guava! EP 1" },
+      { "id": "fpSfGMoRVHw", "published": "2025-07-06", "seconds": 1020, "views": 481018, "title": "Life of Ragi – EP 1" },
+      { "id": "ATmT93EDG3c", "published": "2025-07-26", "seconds": 1166, "views": 251443, "title": "The Life of Rice EP 1" },
+      { "id": "sGlFs-40ykw", "published": "2025-10-23", "seconds": 958, "views": 132555, "title": "Life of Palm EP 1" },
+      { "id": "4I7mE18olKU", "published": "2025-11-04", "seconds": 1165, "views": 365819, "title": "Life of Rose EP 1" },
+      { "id": "JXeMllvIZxU", "published": "2026-04-07", "seconds": 789, "views": 257036, "title": "The Life of Dairy EP 2" }
+    ]
+  }
+}
