@@ -137,54 +137,10 @@ b, strong { font-weight: 600; color: var(--text); }
 }
 .mnav__panel a:last-child { border-bottom: 0; font: 500 .98rem/1 var(--font-body); color: var(--muted); }
 
-/* ---------- Hero ---------- */
-.hero { position: relative; isolation: isolate; overflow-x: clip; padding-top: clamp(16px, 1.6vw, 22px); }
-.hero__glow {
-  position: absolute; z-index: -1; left: 0; right: 0; top: calc(-1 * var(--header-h)); height: 820px; pointer-events: none;
-  background:
-    radial-gradient(38% 50% at 80% 38%, rgba(255, 122, 47, .13), transparent 70%),
-    radial-gradient(40% 40% at 8% 0%, rgba(255, 179, 107, .05), transparent 70%);
-}
-.hero__grid {
-  display: grid; grid-template-columns: minmax(0, 1fr) clamp(210px, 17vw, 252px);
-  gap: clamp(24px, 4vw, 56px); align-items: end;
-}
-.hero__copy { padding-bottom: clamp(18px, 1.6vw, 22px); }
-.hero__id { display: flex; align-items: center; gap: 14px; }
-.hero__face {
-  display: none; width: 60px; height: 60px; flex: none; border-radius: 50%; box-shadow: 0 0 0 1px var(--line-2);
-  background:
-    url("../assets/img/abirich-face.webp") center / 100% 100% no-repeat,
-    radial-gradient(circle at 50% 42%, rgba(255, 122, 47, .5), rgba(255, 122, 47, .06) 72%),
-    var(--surface-2);
-}
+/* ---------- Hero (layout and animation live in hero.css) ---------- */
 .eyebrow { display: flex; flex-wrap: wrap; font-size: var(--fs-micro); line-height: 1.7; letter-spacing: .14em; color: var(--muted); }
 .eyebrow > span + span::before { content: "·"; margin: 0 .75em; color: var(--faint); }
-.hero__title {
-  margin-top: 12px; font: 700 var(--fs-hero)/1 var(--font-display); letter-spacing: -.032em; color: var(--text); text-wrap: balance;
-}
-.hero__title span { color: var(--muted); }
-.hero__sub {
-  margin-top: 14px; max-width: 64ch; font-size: clamp(1.02rem, .95rem + .3vw, 1.12rem); line-height: 1.5;
-  color: var(--text-2); text-wrap: pretty;
-}
-/* Buttons and the "Now" line share one row on wide screens; the line wraps below them when space runs out. */
-.hero__row { margin-top: 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
-.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.hero__now { flex: 1 1 300px; display: flex; align-items: flex-start; gap: 12px; font-size: .92rem; line-height: 1.45; color: var(--muted); text-wrap: balance; }
-.hero__now b { color: var(--text-2); }
 .hero__now .live, .contact__avail .live { margin-top: calc(.725em - 4px); }
-.hero__figure { position: relative; align-self: end; }
-.hero__figure picture { display: block; }
-.hero__figure::before {
-  content: ""; position: absolute; z-index: -1; left: -34%; right: -34%; top: 2%; bottom: 22%;
-  background: radial-gradient(closest-side, rgba(255, 122, 47, .34), rgba(255, 122, 47, .10) 58%, transparent);
-}
-.hero__figure img {
-  width: 100%; aspect-ratio: 470 / 610; object-fit: cover; object-position: 50% 0;
-  -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 98%);
-  mask-image: linear-gradient(180deg, #000 62%, transparent 98%);
-}
 
 /* ---------- Sections ---------- */
 .section { padding-block: var(--section-y); }
@@ -587,13 +543,8 @@ b, strong { font-weight: 600; color: var(--text); }
   .mnav { display: block; }
   .hdr-cv__long { display: none; }
   .hdr-cv__short { display: inline; }
-  .hero__grid { grid-template-columns: minmax(0, 1fr); }
-  .hero__figure { display: none; }
-  .hero__face { display: block; }
-  .hero__title { margin-top: 26px; }
   .eyebrow > span:first-child { flex-basis: 100%; color: var(--text-2); }
   .eyebrow > span:nth-child(2)::before { content: none; }
-  .hero__glow { background: radial-gradient(60% 40% at 18% 8%, rgba(255, 122, 47, .12), transparent 70%); }
 }
 @media (max-width: 599px) {
   body { font-size: 1rem; }
@@ -601,10 +552,6 @@ b, strong { font-weight: 600; color: var(--text); }
   .eyebrow > span { display: block; text-wrap: balance; }
   .eyebrow > span:first-child { color: var(--text-2); }
   .eyebrow > span + span::before { content: none; }
-  .hero__sub { margin-top: 20px; }
-  .hero__row { margin-top: 24px; }
-  .hero__actions { flex: 1 1 100%; gap: 10px; }
-  .hero__actions .btn { flex: 1 1 auto; padding: 0 14px; gap: 8px; font-size: .94rem; }
 
   .totals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 22px; }
   .totals > div { padding: 2px 0 2px 18px; }
@@ -700,7 +647,6 @@ b, strong { font-weight: 600; color: var(--text); }
   .skip-link, .site-header, .mnav, .player, .toast, .hero__glow, .hero__figure::before, .media__more, .chart__data, .chart__tip, .c-xh, [data-copy],
   .hero__actions, .ch-card > .more, .contact__actions { display: none !important; }
   .edit-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .hero__figure img { -webkit-mask-image: none; mask-image: none; }
   .ch-card--own, .contact__panel { background: var(--surface); }
   .vcard__fmt, .vcard__dur { background: rgba(255, 255, 255, .92); color: var(--text); }
   .vcard__play { display: none; }

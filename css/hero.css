@@ -1,226 +1,256 @@
-/* HERO (BUILD_SPEC 4). Works without JS. hero.js sets --px/--py (-1..1) and .is-enhanced/.is-gl/.is-assembling/.is-relock on the stage, .is-off on #hero.
-Knobs: vars on .hero; per tracker --ax/--ay = anchor (fraction of photo box), --dx/--dy = leader (dx>=dy). */
-.hero{
---fig-h:min(calc((83svh - var(--dock-h) - var(--header-h))/.635),92vw,125svh);
---fig-w:calc(var(--fig-h)*.5609);
---fig-cut:.72;
---fade-a:.5;
---fig-top:calc(100% - var(--dock-h) - var(--fig-h)*var(--fig-cut));
---fig-x:0px;
---erode:2px;
---mega-fs:min(var(--fs-mega),41svh,25vw);
---mega-lift:.45;
---mega-top:max(calc(var(--header-h) + 4px),calc(var(--fig-top) + var(--fig-h)*.085 - var(--mega-fs)*var(--mega-lift)));
---mega-x:0px;
---h1-fs:clamp(2.3rem,min(1rem + 3.3vw,7.4svh),4.9rem);
---trk-base:700ms;
-position:relative;min-height:100svh;overflow:hidden;overflow:clip;isolation:isolate;background:var(--bg);
+/* ---------- Animated hero ----------
+   Works without JS (static portrait, numbers, copy). js/hero.js adds: pointer parallax (--px/--py on the stage), the particle
+   intro (high-tier desktops, once per session, REPLAY button) and the scroll-scrubbed photo sequence (js/seq.js: hands out
+   of the pockets, arms fold, soft smile). The header overlays the hero, so the pin wrapper pulls the hero up under it.
+   Knobs: vars on .hero; per tracker --ax/--ay = anchor (fraction of the photo box), --dx/--dy = leader line (dx >= dy). */
+.hero-pin { margin-top: calc(-1 * var(--header-h)); }
+.hero {
+  --dock-h: 0px;
+  --fs-mega: clamp(7rem, 2rem + 24vw, 26rem);
+  --badge-bg: var(--team-bg);
+  --badge-fg: var(--team-fg);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --fig-h: min(calc((83svh - var(--header-h)) / .635), 92vw, 125svh);
+  --fig-w: calc(var(--fig-h) * .5609);
+  --fig-cut: .72;
+  --fade-a: .5;
+  --fig-top: calc(100% - var(--fig-h) * var(--fig-cut));
+  --fig-x: 0px;
+  --mega-fs: min(var(--fs-mega), 41svh, 25vw);
+  --mega-lift: .45;
+  --mega-top: max(calc(var(--header-h) + 4px), calc(var(--fig-top) + var(--fig-h) * .085 - var(--mega-fs) * var(--mega-lift)));
+  --mega-x: 0px;
+  --h1-fs: clamp(2.3rem, min(1rem + 3.1vw, 7svh), 4.2rem);
+  --trk-base: 700ms;
+  position: relative; min-height: 100vh; min-height: 100svh; overflow: hidden; overflow: clip; isolation: isolate; background: var(--bg);
 }
-.hero::after{
-content:"";position:absolute;inset:-64px;z-index:6;pointer-events:none;opacity:.06;mix-blend-mode:overlay;
-background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/180px 180px;
+/* Film grain */
+.hero::after {
+  content: ""; position: absolute; inset: -64px; z-index: 6; pointer-events: none; opacity: .05; mix-blend-mode: overlay;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0 / 180px 180px;
 }
-html[data-motion=full][data-tier=high] .hero::after{animation:hero-grain 1s steps(1) infinite}
-.hero.is-off::after,.hero.is-off *,.hero.is-off *::before,.hero.is-off *::after{animation-play-state:paused!important}
-.hero__stage{position:absolute;top:0;right:0;bottom:0;width:58%;perspective:1400px;pointer-events:none}
-.hero__light{
-position:absolute;z-index:0;width:calc(var(--fig-w)*1.9);aspect-ratio:1;
-left:calc(50% + var(--fig-x) - var(--fig-w)*.83);top:calc(var(--fig-top) + var(--fig-h)*.22 - var(--fig-w)*.95);
-background:radial-gradient(closest-side,rgba(255,122,47,.3),rgba(255,122,47,.13) 40%,rgba(255,122,47,.04) 68%,transparent);
-translate:calc(var(--px,0)*26px) calc(var(--py,0)*18px);
+html[data-motion=full][data-tier=high] .hero::after { animation: hero-grain 1s steps(1) infinite; }
+.hero.is-off::after, .hero.is-off *, .hero.is-off *::before, .hero.is-off *::after { animation-play-state: paused !important; }
+
+/* ---------- Stage: light, giant number, portrait, trackers ---------- */
+.hero__stage { position: absolute; top: 0; right: 0; bottom: 0; width: 58%; perspective: 1400px; pointer-events: none; }
+.hero__light {
+  position: absolute; z-index: 0; width: calc(var(--fig-w) * 1.9); aspect-ratio: 1;
+  left: calc(50% + var(--fig-x) - var(--fig-w) * .95); top: calc(var(--fig-top) + var(--fig-h) * .22 - var(--fig-w) * .95);
+  background: radial-gradient(closest-side, rgba(255, 122, 47, .3), rgba(255, 122, 47, .13) 40%, rgba(255, 122, 47, .04) 68%, transparent);
+  translate: calc(var(--px, 0) * 26px) calc(var(--py, 0) * 18px);
 }
-.hero__mega{
-position:absolute;z-index:0;display:flex;justify-content:center;user-select:none;top:var(--mega-top);
-left:calc(-50% + var(--fig-x) + var(--mega-x));right:calc(-50% - var(--fig-x) - var(--mega-x));
-translate:calc(var(--px,0)*-18px) calc(var(--py,0)*-18px);
+.hero__mega {
+  position: absolute; z-index: 0; display: flex; justify-content: center; user-select: none; top: var(--mega-top);
+  left: calc(-50% + var(--fig-x) + var(--mega-x)); right: calc(-50% - var(--fig-x) - var(--mega-x));
+  translate: calc(var(--px, 0) * -18px) calc(var(--py, 0) * -18px);
 }
-.hero__mega span{
-display:block;font:800 var(--mega-fs)/.78 var(--font-display);letter-spacing:-.05em;white-space:nowrap;
--webkit-text-fill-color:transparent;-webkit-text-stroke:1.5px var(--line-3);
-background:linear-gradient(100deg,transparent 38%,rgba(255,179,107,.3) 48%,rgba(255,122,47,.1) 56%,transparent 66%) -60% 0/260% 100% no-repeat,
-linear-gradient(to top,rgba(255,122,47,.2),rgba(255,122,47,.05) 55%,transparent 85%);
--webkit-background-clip:text;background-clip:text;animation:hero-sheen 2.8s var(--ease-out) .4s both;
+.hero__mega span {
+  display: block; font: 800 var(--mega-fs)/.78 var(--font-display); letter-spacing: -.05em; white-space: nowrap;
+  -webkit-text-fill-color: transparent; -webkit-text-stroke: 1.5px var(--line-3);
+  background:
+    linear-gradient(100deg, transparent 38%, rgba(255, 179, 107, .3) 48%, rgba(255, 122, 47, .1) 56%, transparent 66%) -60% 0 / 260% 100% no-repeat,
+    linear-gradient(to top, rgba(255, 122, 47, .2), rgba(255, 122, 47, .05) 55%, transparent 85%);
+  -webkit-background-clip: text; background-clip: text; animation: hero-sheen 2.8s var(--ease-out) .4s both;
 }
-.hero__gl{
-position:absolute;z-index:1;top:0;right:0;width:100vw;max-width:none;height:100%;opacity:0;visibility:hidden;
-transition:opacity var(--dur-2) linear,visibility 0s linear var(--dur-2);translate:calc(var(--px,0)*6px) calc(var(--py,0)*6px);
+.hero__gl {
+  position: absolute; z-index: 1; top: 0; right: 0; width: 100vw; max-width: none; height: 100%; opacity: 0; visibility: hidden;
+  transition: opacity var(--dur-2) linear, visibility 0s linear var(--dur-2); translate: calc(var(--px, 0) * 6px) calc(var(--py, 0) * 6px);
 }
-.hero__stage.is-gl .hero__gl{opacity:1;visibility:visible;transition:none}
-.hero__figure,.hero__trackers{
-position:absolute;margin:0;padding:0;width:var(--fig-w);height:var(--fig-h);left:calc(50% - var(--fig-w)/2 + var(--fig-x));top:var(--fig-top);
+.hero__stage.is-gl .hero__gl { opacity: 1; visibility: visible; transition: none; }
+.hero__figure, .hero__trackers {
+  position: absolute; margin: 0; padding: 0; width: var(--fig-w); height: var(--fig-h);
+  left: calc(50% - var(--fig-w) / 2 + var(--fig-x)); top: var(--fig-top);
 }
-.hero__figure{z-index:2;translate:calc(var(--px,0)*6px) calc(var(--py,0)*6px)}
-.hero__photo,.hero__seq{
-display:block;width:100%;height:100%;max-width:none;object-fit:cover;transition:opacity var(--dur-2) var(--ease-out);
---m:linear-gradient(#000,#000);--s:100% 100% no-repeat;--e:0px;/* the photo is a transparent cutout; only the bottom fade masks it */
---mk:var(--m) var(--e) 0/var(--s),var(--m) calc(-1*var(--e)) 0/var(--s),var(--m) 0 var(--e)/var(--s),var(--m) 0 calc(-1*var(--e))/var(--s),
-linear-gradient(#000 calc(var(--fade-a)*100%),transparent calc(var(--fig-cut)*100%));
--webkit-mask:var(--mk);-webkit-mask-composite:source-in;mask:var(--mk);mask-composite:intersect;
+.hero__figure { z-index: 2; translate: calc(var(--px, 0) * 6px) calc(var(--py, 0) * 6px); }
+/* The photo is a transparent cutout: only the bottom fade masks it. */
+.hero__photo, .hero__seq {
+  display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; transition: opacity var(--dur-2) var(--ease-out);
+  --mk: linear-gradient(#000 calc(var(--fade-a) * 100%), transparent calc(var(--fig-cut) * 100%));
+  -webkit-mask: var(--mk); mask: var(--mk);
 }
-/* Scroll sequence (js/seq.js): canvas over the photo box, same mask plus a soft left/right edge for the swinging hands.
-It fades in on top of the photo; the photo hides only once the canvas is fully in, and comes back at once. */
-.hero__seq{
-position:absolute;left:0;top:0;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .2s linear,visibility 0s linear .2s;
---edge:linear-gradient(90deg,transparent,#000 4.5%,#000 95.5%,transparent);
--webkit-mask:var(--mk),var(--edge);-webkit-mask-composite:source-in;mask:var(--mk),var(--edge);mask-composite:intersect;
+/* Scroll sequence (js/seq.js): a canvas over the photo box, same mask plus a soft left/right edge for the swinging hands.
+   It fades in over the photo; the photo hides only once the canvas is fully in, and comes back at once. */
+.hero__seq {
+  position: absolute; left: 0; top: 0; pointer-events: none; opacity: 0; visibility: hidden; transition: opacity .2s linear, visibility 0s linear .2s;
+  /* As the arms fold (--seq-p 0..1) the bottom fade moves lower so the folded arms stay visible. At 0 it equals the photo's mask. */
+  --mk: linear-gradient(#000 calc((var(--fade-a) + var(--seq-p, 0) * .12) * 100%), transparent calc((var(--fig-cut) + var(--seq-p, 0) * .06) * 100%));
+  --edge: linear-gradient(90deg, transparent, #000 4.5%, #000 95.5%, transparent);
+  -webkit-mask: var(--mk), var(--edge); -webkit-mask-composite: source-in; mask: var(--mk), var(--edge); mask-composite: intersect;
 }
-.hero__figure.is-seq .hero__seq{opacity:1;visibility:visible;transition:opacity .2s linear}
-.hero__figure.is-seq .hero__photo{visibility:hidden;transition:opacity var(--dur-2) var(--ease-out),visibility 0s linear .2s}
-.hero__stage:is(.is-gl,.is-assembling) .hero__seq{opacity:0;visibility:hidden;transition:none}
-/* Pin (all sizes): a runway after the hero while the action plays (seq.js adds .is-pinned and --pin-top). scroll-margin keeps #hero links at the top. */
-.hero-pin{--seq-run:85vh;--seq-run:85svh}
-.hero-pin.is-pinned>.hero{position:sticky;top:var(--pin-top,0px);scroll-margin-top:var(--seq-run)}
-.hero-pin.is-pinned::after{content:"";display:block;height:var(--seq-run)}
-@media (max-width:1023px){.hero-pin{--seq-run:65vh;--seq-run:65svh}}
-/* As the arms fold (--seq-p 0..1, set by seq.js) the bottom fade moves lower so the folded arms stay visible. At 0 it equals the photo's mask. */
-.hero__seq{--mk:linear-gradient(#000 calc((var(--fade-a) + var(--seq-p,0)*.12)*100%),transparent calc((var(--fig-cut) + var(--seq-p,0)*.06)*100%))}
-.hero__stage.is-assembling .hero__photo{opacity:0;transition:none}
-.hero__trackers{z-index:3;list-style:none;translate:calc(var(--px,0)*14px) calc(var(--py,0)*14px)}
-.tracker{
---dx:44px;--dy:28px;
---lc:rgba(243,236,226,.5);--g:linear-gradient(currentColor 0 0);
-position:absolute;left:calc(var(--ax,var(--tx))*100% + var(--dx));bottom:calc((1 - var(--ay,var(--ty)))*100% + var(--dy));
-box-sizing:content-box;width:max-content;max-width:16em;
-margin:0;padding:7px 10px 8px;font:500 var(--fs-micro)/1.35 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;
-color:var(--text-2);background:#171513b3;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
-border:1px solid var(--line-2);border-radius:6px 6px 6px 0;--d:calc(var(--trk-base) + var(--i)*120ms);animation:trk-in .9s linear var(--d) both;
+.hero__figure.is-seq .hero__seq { opacity: 1; visibility: visible; transition: opacity .2s linear; }
+.hero__figure.is-seq .hero__photo { visibility: hidden; transition: opacity var(--dur-2) var(--ease-out), visibility 0s linear .2s; }
+.hero__stage:is(.is-gl, .is-assembling) .hero__seq { opacity: 0; visibility: hidden; transition: none; }
+.hero__stage.is-assembling .hero__photo { opacity: 0; transition: none; }
+
+/* Pin (all sizes): a runway after the hero while the action plays (seq.js adds .is-pinned and --pin-top). */
+.hero-pin { --seq-run: 85vh; --seq-run: 85svh; }
+.hero-pin.is-pinned > .hero { position: sticky; top: var(--pin-top, 0px); scroll-margin-top: var(--seq-run); }
+.hero-pin.is-pinned::after { content: ""; display: block; height: var(--seq-run); }
+@media (max-width: 1023px) { .hero-pin { --seq-run: 65vh; --seq-run: 65svh; } }
+
+/* Trackers: number labels locked onto the figure with a leader line and corner brackets */
+.hero__trackers { z-index: 3; list-style: none; translate: calc(var(--px, 0) * 14px) calc(var(--py, 0) * 14px); }
+.tracker {
+  --dx: 44px; --dy: 28px;
+  --lc: rgba(243, 236, 226, .5); --g: linear-gradient(currentColor 0 0);
+  position: absolute; left: calc(var(--ax) * 100% + var(--dx)); bottom: calc((1 - var(--ay)) * 100% + var(--dy));
+  box-sizing: content-box; width: max-content; max-width: 16em;
+  margin: 0; padding: 7px 10px 8px; font: 500 var(--fs-micro)/1.35 var(--font-mono); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--text-2); background: rgba(23, 21, 19, .7); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  border: 1px solid var(--line-2); border-radius: 6px 6px 6px 0; --d: calc(var(--trk-base) + var(--i) * 120ms); animation: trk-in .9s linear var(--d) both;
 }
-.tracker b{display:block;margin-bottom:2px;font-size:1.05rem;font-weight:600;line-height:1.2;letter-spacing:-.01em;white-space:nowrap;color:var(--text)}
-.tracker .badge{display:block;width:fit-content;margin-top:5px;padding:2px 6px 3px;border-radius:4px;background:var(--badge-bg);color:var(--badge-fg);font-size:.9em;letter-spacing:.1em}
-.tracker::before{
-content:"";position:absolute;left:calc(-1*var(--dx) - 7px);bottom:calc(-1*var(--dy) - 7px);width:14px;height:14px;color:var(--text);
-background:var(--g) 0 0/5px 1px,var(--g) 0 0/1px 5px,var(--g) 100% 0/5px 1px,var(--g) 100% 0/1px 5px,
-var(--g) 0 100%/5px 1px,var(--g) 0 100%/1px 5px,var(--g) 100% 100%/5px 1px,var(--g) 100% 100%/1px 5px;
-background-repeat:no-repeat;filter:drop-shadow(0 0 1px rgba(0,0,0,.9)) drop-shadow(0 0 3px rgba(0,0,0,.5));animation:trk-lock .9s var(--ease-out) var(--d) both;
+.tracker b { display: block; margin-bottom: 2px; font: 600 1.05rem/1.2 var(--font-body); letter-spacing: -.01em; white-space: nowrap; color: var(--text); }
+.tracker .badge { display: block; width: fit-content; margin-top: 5px; padding: 2px 6px 3px; border-radius: 4px; background: var(--badge-bg); color: var(--badge-fg); font-size: .9em; letter-spacing: .1em; }
+.tracker::before {
+  content: ""; position: absolute; left: calc(-1 * var(--dx) - 7px); bottom: calc(-1 * var(--dy) - 7px); width: 14px; height: 14px; color: var(--text);
+  background: var(--g) 0 0/5px 1px, var(--g) 0 0/1px 5px, var(--g) 100% 0/5px 1px, var(--g) 100% 0/1px 5px,
+    var(--g) 0 100%/5px 1px, var(--g) 0 100%/1px 5px, var(--g) 100% 100%/5px 1px, var(--g) 100% 100%/1px 5px;
+  background-repeat: no-repeat; filter: drop-shadow(0 0 1px rgba(0, 0, 0, .9)) drop-shadow(0 0 3px rgba(0, 0, 0, .5)); animation: trk-lock .9s var(--ease-out) var(--d) both;
 }
-.tracker::after{
-content:"";position:absolute;left:calc(-1*var(--dx));bottom:calc(-1*var(--dy));width:var(--dx);height:var(--dy);
-background:linear-gradient(var(--lc) 0 0) left bottom/max(0px,calc(100% - var(--dy))) 1px no-repeat,
-linear-gradient(to top left,transparent calc(50% - 1px),var(--lc) 50%,transparent calc(50% + 1px)) right bottom/var(--dy) var(--dy) no-repeat;animation:trk-draw-r .9s var(--ease-out) var(--d) both;
+.tracker::after {
+  content: ""; position: absolute; left: calc(-1 * var(--dx)); bottom: calc(-1 * var(--dy)); width: var(--dx); height: var(--dy);
+  background: linear-gradient(var(--lc) 0 0) left bottom / max(0px, calc(100% - var(--dy))) 1px no-repeat,
+    linear-gradient(to top left, transparent calc(50% - 1px), var(--lc) 50%, transparent calc(50% + 1px)) right bottom / var(--dy) var(--dy) no-repeat;
+  animation: trk-draw-r .9s var(--ease-out) var(--d) both;
 }
-.tracker b::before{content:"";position:absolute;left:calc(-1*var(--dx) - 2px);bottom:calc(-1*var(--dy) - 2px);width:4px;height:4px;border-radius:50%;background:var(--accent)}
-.tracker:nth-child(2n){left:calc(var(--ax,var(--tx))*100% - var(--dx));transform:translateX(-100%);border-radius:6px 6px 0 6px}
-.tracker:nth-child(2n)::before{left:calc(100% + var(--dx) - 7px)}
-.tracker:nth-child(2n) b::before{left:calc(100% + var(--dx) - 2px)}
-.tracker:nth-child(2n)::after{
-left:100%;background:linear-gradient(var(--lc) 0 0) right bottom/max(0px,calc(100% - var(--dy))) 1px no-repeat,
-linear-gradient(to top right,transparent calc(50% - 1px),var(--lc) 50%,transparent calc(50% + 1px)) left bottom/var(--dy) var(--dy) no-repeat;animation-name:trk-draw-l;
+.tracker b::before { content: ""; position: absolute; left: calc(-1 * var(--dx) - 2px); bottom: calc(-1 * var(--dy) - 2px); width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+.tracker:nth-child(2n) { left: calc(var(--ax) * 100% - var(--dx)); transform: translateX(-100%); border-radius: 6px 6px 0 6px; }
+.tracker:nth-child(2n)::before { left: calc(100% + var(--dx) - 7px); }
+.tracker:nth-child(2n) b::before { left: calc(100% + var(--dx) - 2px); }
+.tracker:nth-child(2n)::after {
+  left: 100%;
+  background: linear-gradient(var(--lc) 0 0) right bottom / max(0px, calc(100% - var(--dy))) 1px no-repeat,
+    linear-gradient(to top right, transparent calc(50% - 1px), var(--lc) 50%, transparent calc(50% + 1px)) left bottom / var(--dy) var(--dy) no-repeat;
+  animation-name: trk-draw-l;
 }
-.tracker[data-anchor=head]{--i:0;--ax:.735;--ay:.19;--dx:46px;--dy:22px;max-width:10.6em}
-.tracker[data-anchor=shoulder]{--i:1;--ax:.2;--ay:.385;--dx:64px;--dy:64px}
-.tracker[data-anchor=chest]{--i:2;--ax:.72;--ay:.47;--dx:46px;--dy:28px}
-.tracker[data-anchor=pocket]{--i:3;--ax:.3;--ay:.565;--dx:46px;--dy:30px}
-html[data-motion=full] .tracker b::before{animation:trk-pulse 2.2s var(--ease-out) calc(var(--d) + .9s) infinite}
-.hero__stage.is-relock{--trk-base:120ms}
-.hero__stage.is-assembling .tracker{opacity:0;animation:none;transition:opacity 150ms linear}
-.hero__stage.is-assembling .tracker::before,.hero__stage.is-assembling .tracker::after{animation:none}
-.hero__copy{
-position:relative;z-index:4;box-sizing:border-box;width:46%;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-padding:calc(var(--header-h) + 2svh) 24px calc(var(--dock-h) + 3svh) max(var(--gutter),calc((100vw - var(--maxw))/2));
+.tracker[data-anchor=head] { --i: 0; --ax: .735; --ay: .19; --dx: 46px; --dy: 22px; max-width: 10.6em; }
+.tracker[data-anchor=shoulder] { --i: 1; --ax: .2; --ay: .385; --dx: 64px; --dy: 64px; }
+.tracker[data-anchor=chest] { --i: 2; --ax: .72; --ay: .47; --dx: 46px; --dy: 28px; }
+.tracker[data-anchor=pocket] { --i: 3; --ax: .3; --ay: .565; --dx: 46px; --dy: 30px; }
+html[data-motion=full] .tracker b::before { animation: trk-pulse 2.2s var(--ease-out) calc(var(--d) + .9s) infinite; }
+.hero__stage.is-relock { --trk-base: 120ms; }
+.hero__stage.is-assembling .tracker { opacity: 0; animation: none; transition: opacity 150ms linear; }
+.hero__stage.is-assembling .tracker::before, .hero__stage.is-assembling .tracker::after { animation: none; }
+
+/* ---------- Copy (same text and buttons as before) ---------- */
+.hero__copy {
+  position: relative; z-index: 4; box-sizing: border-box; width: 46%; min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: calc(var(--header-h) + 2svh) 24px 4svh max(var(--gutter), calc((100% - var(--maxw)) / 2));
 }
-.hero__copy>*{margin:0}
-.hero__copy .eyebrow{display:flex;align-items:flex-start;letter-spacing:.08em;line-height:1.5;margin-bottom:clamp(14px,2.6svh,26px)}
-.hero__copy .eyebrow .rec{margin-top:.42em}
-.hero .rec{flex:none;width:8px;height:8px;margin-right:10px;border-radius:50%;background:var(--tally);box-shadow:0 0 0 3px rgba(255,59,47,.18);animation:hero-rec 1.6s steps(1) infinite}
-.hero__title{font:750 var(--h1-fs)/.98 var(--font-display);letter-spacing:-.032em;text-wrap:balance;color:var(--text)}
-.hero__title em{
-display:block;width:fit-content;margin-top:.1em;font-style:normal;color:var(--accent-2);
-background:linear-gradient(172deg,#ffd0a0,var(--accent-2) 38%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+.hero__copy > * { margin: 0; }
+.hero__copy .eyebrow { margin-bottom: clamp(14px, 2.6svh, 26px); }
+/* Name on its own line, role and city below it */
+.hero__copy .eyebrow > span:first-child { flex-basis: 100%; color: var(--text-2); }
+.hero__copy .eyebrow > span:nth-child(2)::before { content: none; }
+.hero__title { font: 700 var(--h1-fs)/1 var(--font-display); letter-spacing: -.032em; color: var(--text); text-wrap: balance; }
+.hero__title span { color: var(--muted); }
+.hero__sub { max-width: 52ch; margin-top: clamp(16px, 2.8svh, 28px); font-size: clamp(1.02rem, .95rem + .3vw, 1.14rem); line-height: 1.55; color: var(--text-2); text-wrap: pretty; }
+.hero__row { margin-top: clamp(20px, 3.4svh, 34px); display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero__now { flex: 1 1 300px; display: flex; align-items: flex-start; gap: 12px; font-size: .92rem; line-height: 1.45; color: var(--muted); text-wrap: balance; }
+.hero__now b { color: var(--text-2); }
+
+.hero__scrollcue {
+  position: absolute; z-index: 4; left: max(var(--gutter), calc((100% - var(--maxw)) / 2)); bottom: 18px; padding-bottom: 38px; pointer-events: none;
+  font: 500 .74rem/1 var(--font-mono); letter-spacing: .24em; white-space: nowrap; color: var(--muted);
 }
-.hero__sub{max-width:50ch;margin-top:clamp(16px,3svh,30px)!important;font-size:clamp(1rem,1rem + .28vw,1.18rem);line-height:1.55;color:var(--text-2)}
-.hero__sub.only-mobile{display:none}
-.hero__ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(20px,3.6svh,36px)!important}
-.hero__cv{margin-top:14px!important;font-size:var(--fs-small)}
-.hero__cv a{color:var(--text);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:4px}
-.hero__cv a:hover{color:var(--accent-2)}
-.hero__roles{max-width:58ch;margin-top:clamp(12px,2.4svh,24px)!important;font-size:.92rem;line-height:1.5;color:var(--muted)}
-.hero__scrollcue{
-position:absolute;z-index:4;left:50%;bottom:calc(var(--dock-h) + 14px);translate:-50% 0;padding-bottom:38px;pointer-events:none;
-font:500 .8rem/1 var(--font-mono);letter-spacing:.24em;white-space:nowrap;color:var(--muted);
+.hero__scrollcue::after { content: ""; position: absolute; left: 6px; bottom: 0; width: 1px; height: 28px; background: linear-gradient(var(--accent), transparent); transform-origin: top; animation: hero-cue 2.2s var(--ease-in-out) infinite; }
+html[data-motion=off] :is(.tracker, .hero__mega span), html[data-motion=off] .tracker::before, html[data-motion=off] .tracker::after { animation: none; }
+html[data-motion=off] .hero__scrollcue { display: none; }
+
+.hero__replay {
+  position: absolute; z-index: 5; right: var(--gutter); bottom: 16px; min-height: 36px; padding: 0 14px; cursor: pointer; pointer-events: auto;
+  font: 500 var(--fs-micro)/1 var(--font-mono); letter-spacing: .12em; color: var(--muted); background: rgba(11, 10, 9, .5);
+  border: 1px solid var(--line-2); border-radius: var(--r-pill); transition: color var(--dur-1), border-color var(--dur-1);
 }
-.hero__scrollcue::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:28px;background:linear-gradient(var(--accent),transparent);transform-origin:top;animation:hero-cue 2.2s var(--ease-in-out) infinite}
-html[data-motion=off] :is(.tracker,.hero__mega span,.hero .rec),html[data-motion=off] .tracker::before,html[data-motion=off] .tracker::after{animation:none}
-html[data-motion=off] .hero__scrollcue{display:none}
-.hero__replay{
-position:absolute;z-index:5;right:var(--gutter);bottom:calc(var(--dock-h) + 16px);min-height:36px;padding:0 14px;cursor:pointer;pointer-events:auto;
-font:500 var(--fs-micro)/1 var(--font-mono);letter-spacing:.12em;color:var(--muted);background:#0b0a0980;
-border:1px solid var(--line-2);border-radius:var(--r-pill);transition:color var(--dur-1),border-color var(--dur-1);
+.hero__replay:hover { color: var(--text); border-color: var(--line-3); }
+.hero__replay:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hero__replay[hidden] { display: none; }
+
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .hero__stage.is-enhanced > :is(.hero__light, .hero__mega, .hero__figure, .hero__trackers) { will-change: translate; }
+  .hero__stage.is-enhanced > .hero__mega { rotate: y calc(var(--px, 0) * -5deg); }
 }
-.hero__replay:hover{color:var(--text);border-color:var(--line-3)}
-.hero__replay:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.hero__replay[hidden]{display:none}
-@media (hover:hover) and (pointer:fine) and (min-width:1024px){
-.hero__stage.is-enhanced>:is(.hero__light,.hero__mega,.hero__figure,.hero__trackers){will-change:translate}
-.hero__stage.is-enhanced>.hero__mega{rotate:y calc(var(--px,0)*-5deg)}
+@media (min-width: 1280px) { .hero__copy { width: max(46%, calc((100% - var(--maxw)) / 2 + 620px)); } }
+@media (min-width: 1024px) and (max-width: 1439px) { .tracker[data-anchor=shoulder] { --ax: .34; --ay: .45; --dx: 44px; --dy: 32px; } }
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .hero__copy .eyebrow > span { flex-basis: 100%; }
+  .hero__copy .eyebrow > span + span::before { content: none; }
+  .tracker { font-size: .7rem; }
+  .tracker[data-anchor=head] { --dx: 34px; }
+  .tracker[data-anchor=chest] { --ax: .66; --dx: 34px; max-width: 11.5em; }
 }
-@media (min-width:1024px) and (max-width:1439px){.tracker[data-anchor=shoulder]{--ax:.34;--ay:.45;--dx:44px;--dy:32px}}
-@media (min-width:1024px) and (max-width:1279px){
-.tracker{font-size:.8rem}
-.tracker[data-anchor=head]{--dx:34px}
-.tracker[data-anchor=chest]{--ax:.66;--dx:34px;max-width:11.5em}
+@media (min-width: 1024px) and (max-height: 820px) {
+  .hero { --h1-fs: clamp(2.2rem, 6.3svh, 4rem); }
+  .hero__copy .eyebrow { margin-bottom: 2svh; }
+  .hero__sub { margin-top: 2.2svh; font-size: 1.02rem; line-height: 1.5; }
+  .hero__row { margin-top: 3svh; }
 }
-@media (min-width:1024px) and (max-height:820px){
-.hero{--h1-fs:clamp(2.2rem,6.5svh,4.2rem)}
-.hero__copy .eyebrow{margin-bottom:2svh}
-.hero__sub{margin-top:2.4svh!important;font-size:1.05rem;line-height:1.5}
-.hero__ctas{margin-top:3svh!important}
-.hero__cv{margin-top:10px!important}
-.hero__roles{margin-top:1.8svh!important;font-size:.88rem}
+
+/* Tablet landscape: narrower stage, two trackers */
+@media (max-width: 1023px) {
+  .hero { --fig-h: min(calc((83svh - var(--header-h)) / .635), 82vw); --mega-fs: 23vw; }
+  .hero__stage { width: 48%; }
+  .hero__copy { width: 52%; }
+  .tracker:nth-child(n+3) { display: none; }
+  .tracker { padding: 6px 8px 7px; font-size: .7rem; }
+  .tracker b { font-size: 1.03rem; }
+  .tracker[data-anchor=head] { --ax: .56; --ay: .5; --dx: 34px; --dy: 24px; }
+  .tracker[data-anchor=shoulder] { --ax: .38; --ay: .6; --dx: 34px; --dy: 24px; }
 }
-@media (max-width:1023px){
-.hero{--fig-h:min(calc((83svh - var(--dock-h) - var(--header-h))/.635),82vw);--mega-fs:23vw}
-.hero__stage{width:48%}
-.hero__copy{width:52%}
-.tracker:nth-child(n+3){display:none}
-.tracker{padding:6px 8px 7px;font-size:.78rem}
-.tracker b{font-size:1.03rem}
-.tracker[data-anchor=head]{--ax:.56;--ay:.5;--dx:34px;--dy:24px}
-.tracker[data-anchor=shoulder]{--ax:.38;--ay:.6;--dx:34px;--dy:24px}
+
+/* Phones and portrait tablets: portrait on top, copy below it */
+@media (max-width: 767px), (max-width: 1023px) and (max-aspect-ratio: 4/5) {
+  .hero {
+    --fig-h: min(84svh, 190vw); --fig-top: calc(var(--header-h) + 4svh); --fig-cut: .7; --fade-a: .47;
+    --mega-fs: 40vw; --mega-lift: .56; --h1-fs: clamp(2.1rem, 1.2rem + 4.6vw, 2.7rem);
+    display: flex; flex-direction: column; min-height: 0;
+  }
+  .hero__stage { position: relative; inset: auto; flex: none; width: 100%; height: 82vh; height: 82svh; }
+  .hero__copy { width: auto; min-height: 0; margin-top: -18svh; padding: 0 var(--gutter) 40px; justify-content: flex-start; }
+  .hero__copy::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: -6svh; height: 26svh; background: linear-gradient(rgba(11, 10, 9, 0), rgba(11, 10, 9, .82) 45%, var(--bg) 80%); }
+  .hero__copy .eyebrow { margin-bottom: 14px; }
+  .tracker { font-size: .68rem; letter-spacing: .04em; }
+  .tracker b { font-size: 1rem; }
+  .tracker[data-anchor=head] { --ax: .5; --ay: .47; --dx: 28px; --dy: 22px; max-width: 10.2em; }
+  .tracker[data-anchor=shoulder] { --ax: .42; --ay: .56; --dx: 28px; --dy: 22px; max-width: 6.8em; }
+  .hero__scrollcue { display: none; }
+  .hero__replay { bottom: auto; top: calc(var(--header-h) + 12px); }
 }
-@media (max-width:767px),(max-width:1023px) and (max-aspect-ratio:4/5){
-.hero{
---fig-h:min(84svh,190vw);--fig-top:calc(var(--header-h) + 4svh);--fig-cut:.7;--fade-a:.47;--erode:1.5px;
---mega-fs:40vw;--mega-lift:.56;--h1-fs:clamp(2rem,1.1rem + 4.6vw,2.6rem);display:flex;flex-direction:column;min-height:0;
+@media (max-width: 599px) {
+  .hero__sub { margin-top: 18px; }
+  .hero__row { margin-top: 22px; }
+  .hero__actions { flex: 1 1 100%; gap: 10px; }
+  .hero__actions .btn { flex: 1 1 auto; padding: 0 14px; gap: 8px; font-size: .94rem; }
 }
-.hero__stage{position:relative;inset:auto;flex:none;width:100%;height:82svh}
-.hero__copy{width:auto;min-height:0;margin-top:-18svh;padding:0 var(--gutter) 44px;justify-content:flex-start}
-.hero__copy::before{content:"";position:absolute;z-index:-1;left:0;right:0;top:-6svh;height:26svh;background:linear-gradient(#0b0a0900,#0b0a09d1 45%,var(--bg) 80%)}
-.tracker{font-size:.76rem;letter-spacing:.04em}
-.tracker b{font-size:1rem}
-.tracker[data-anchor=head]{--ax:.5;--ay:.47;--dx:28px;--dy:22px;max-width:10.2em}
-.tracker[data-anchor=shoulder]{--ax:.42;--ay:.56;--dx:28px;--dy:22px;max-width:6.8em}
-html[data-units=indian] .tracker[data-anchor=shoulder]{max-width:9.4em}
-.hero__scrollcue{display:none}
+@media (min-width: 768px) and (max-width: 1023px) and (max-aspect-ratio: 4/5) {
+  .hero { --fig-h: min(78svh, 120vw); --mega-fs: 34vw; --h1-fs: clamp(2.6rem, 1rem + 4vw, 3.4rem); }
+  .hero__stage { height: 76svh; }
+  .hero__copy { max-width: 680px; margin-top: -14svh; }
+  .tracker { font-size: .72rem; }
 }
-@media (max-width:767px){
-.hero__sub.only-desktop{display:none}
-.hero__sub.only-mobile{display:block}
-.hero__ctas{flex-direction:column}
-.hero__ctas .btn{width:100%;justify-content:center}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion]) :is(.tracker, .hero__mega span), html:not([data-motion]) .tracker::before, html:not([data-motion]) .tracker::after { animation: none; }
+  html:not([data-motion]) .hero__scrollcue { display: none; }
 }
-@media (min-width:768px) and (max-width:1023px) and (max-aspect-ratio:4/5){
-.hero{--fig-h:min(78svh,120vw);--mega-fs:34vw;--h1-fs:clamp(2.6rem,1rem + 4vw,3.6rem)}
-.hero__stage{height:76svh}
-.hero__copy{max-width:680px;margin-top:-14svh}
-.tracker{font-size:.8rem}
-.tracker b{font-size:1rem}
+@media print {
+  .hero-pin { margin-top: 0; }
+  .hero-pin.is-pinned::after { display: none; }
+  .hero-pin.is-pinned > .hero { position: relative; }
+  .hero { min-height: 0; background: none; }
+  .hero::after, .hero__stage, .hero__scrollcue, .hero__replay { display: none !important; }
+  .hero__copy { width: auto; min-height: 0; margin: 0; padding: 0 0 16px; }
+  .hero__copy::before { content: none; }
 }
-@media (prefers-reduced-motion:reduce){
-html:not([data-motion]) :is(.tracker,.hero__mega span,.hero .rec),html:not([data-motion]) .tracker::before,html:not([data-motion]) .tracker::after{animation:none}
-html:not([data-motion]) .hero__scrollcue{display:none}
-}
-@media print{
-.hero__seq{display:none!important}
-.hero__figure.is-seq .hero__photo{visibility:visible}
-.hero-pin.is-pinned::after{display:none}
-.hero-pin.is-pinned>.hero{position:relative}
-}
-@keyframes trk-in{0%{opacity:0}10%{opacity:1}15%{opacity:.08}21%,to{opacity:1}}
-@keyframes trk-lock{0%{transform:scale(1.6);color:var(--accent)}50%{transform:none;color:var(--accent)}64%,to{transform:none;color:var(--text)}}
-@keyframes trk-draw-r{0%,30%{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
-@keyframes trk-draw-l{0%,30%{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0)}}
-@keyframes trk-pulse{0%{box-shadow:0 0 0 0 rgba(255,122,47,.6)}70%,to{box-shadow:0 0 0 7px #ff7a2f00}}
-@keyframes hero-sheen{from{background-position:150% 0,0 0}to{background-position:-60% 0,0 0}}
-@keyframes hero-rec{50%{opacity:.25}}
-@keyframes hero-cue{0%{transform:scaleY(0);opacity:1}55%{transform:scaleY(1);opacity:1}100%{transform:translateY(10px);opacity:0}}
-@keyframes hero-grain{20%{transform:translate(-22px,14px)}40%{transform:translate(18px,-26px)}60%{transform:translate(26px,22px)}80%{transform:translate(-26px,-30px)}}
+
+@keyframes trk-in { 0% { opacity: 0 } 10% { opacity: 1 } 15% { opacity: .08 } 21%, to { opacity: 1 } }
+@keyframes trk-lock { 0% { transform: scale(1.6); color: var(--accent) } 50% { transform: none; color: var(--accent) } 64%, to { transform: none; color: var(--text) } }
+@keyframes trk-draw-r { 0%, 30% { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0) } }
+@keyframes trk-draw-l { 0%, 30% { clip-path: inset(0 0 0 100%) } to { clip-path: inset(0) } }
+@keyframes trk-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 122, 47, .6) } 70%, to { box-shadow: 0 0 0 7px rgba(255, 122, 47, 0) } }
+@keyframes hero-sheen { from { background-position: 150% 0, 0 0 } to { background-position: -60% 0, 0 0 } }
+@keyframes hero-cue { 0% { transform: scaleY(0); opacity: 1 } 55% { transform: scaleY(1); opacity: 1 } 100% { transform: translateY(10px); opacity: 0 } }
+@keyframes hero-grain { 20% { transform: translate(-22px, 14px) } 40% { transform: translate(18px, -26px) } 60% { transform: translate(26px, 22px) } 80% { transform: translate(-26px, -30px) } }
