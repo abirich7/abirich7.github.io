@@ -24,10 +24,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Geist:wght@400..700&amp;family=Geist+Mono:wght@400..600&amp;display=swap">
-<link rel="preload" as="image" type="image/webp" href="assets/img/abirich-portrait-cutout.webp" media="(min-width: 820px)">
+<link rel="preload" as="image" type="image/webp" href="assets/img/abirich-portrait.webp" imagesrcset="assets/img/abirich-portrait-600.webp 600w, assets/img/abirich-portrait.webp 939w" imagesizes="(max-width: 767px) 92vw, 46vw" fetchpriority="high">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/hero.css">
 <script src="js/site.js" defer></script>
+<script type="module" src="js/hero.js"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Abirich Vaithiyalingam","jobTitle":"Content Strategist & Social Media Lead","url":"https://abirich7.github.io/","email":"mailto:abirichcrown@gmail.com","telephone":"+91 79048 59661","image":"https://abirich7.github.io/og.png","address":{"@type":"PostalAddress","addressLocality":"Bengaluru","addressCountry":"IN"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Vysya Arts & Science College, Salem"},"knowsAbout":["Content strategy","Social media strategy","Audience growth","Short-form video","YouTube","Podcast production","Video editing","AI video"]}
 </script>
@@ -77,33 +79,36 @@
 <main id="main">
 
   <!-- 1. Hero: who, what, and the combined reach -->
+  <div class="hero-pin">
   <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="hero__glow" aria-hidden="true"></div>
-    <div class="wrap hero__grid">
-      <div class="hero__copy">
-        <div class="hero__id">
-          <span class="hero__face" aria-hidden="true"></span>
-          <p class="eyebrow"><span>Abirich Vaithiyalingam</span><span>Content Strategist&nbsp;&amp; <span class="nw">Social Media Lead</span></span><span>Bengaluru</span></p>
-        </div>
-        <h1 class="hero__title" id="hero-title">I grow audiences. <span>And I make the videos that grow them.</span></h1>
-        <p class="hero__sub">7+ years in social video. I built my own Facebook page from zero to 1.18M followers. I led post-production and social media on the core team of a <span class="nw">2.97M-subscriber</span> creator brand. Today I plan the content for Kootan Soru.</p>
-        <div class="hero__row">
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#channels">See the channels<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn--ghost" href="cv/Abirich-Vaithiyalingam-CV.pdf" download><svg class="ico" aria-hidden="true"><use href="#i-down"/></svg>Download CV</a>
-          </div>
-          <p class="hero__now"><span class="live" aria-hidden="true"></span><span><b>Now:</b> <span class="nw">Content Strategist, Kootan Soru</span> · <span class="nw">Senior Video Editor, Arkahub, Bengaluru</span></span></p>
-        </div>
-      </div>
+    <div class="hero__stage" id="hero-stage">
+      <div class="hero__light" aria-hidden="true"></div>
+      <div class="hero__mega" aria-hidden="true"><span>1.18M</span></div>
       <figure class="hero__figure">
-        <picture>
-          <source media="(max-width: 819px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-          <source type="image/webp" srcset="assets/img/abirich-portrait-cutout.webp">
-          <img src="assets/img/abirich-portrait-cutout.png" width="470" height="837" fetchpriority="high" decoding="async" alt="Abirich Vaithiyalingam in a cream pinstripe suit and white shirt.">
-        </picture>
+        <img class="hero__photo" id="hero-photo" src="assets/img/abirich-portrait.webp" srcset="assets/img/abirich-portrait-600.webp 600w, assets/img/abirich-portrait.webp 939w" sizes="(max-width: 767px) 92vw, 46vw" width="939" height="1674" fetchpriority="high" decoding="async" alt="Abirich Vaithiyalingam in a cream pinstripe suit and white shirt.">
       </figure>
+      <ul class="hero__trackers" aria-label="Main numbers">
+        <li class="tracker" data-anchor="head"><b>1.18M</b> followers · grown from zero</li>
+        <li class="tracker" data-anchor="shoulder"><b>87M+</b> views · 149 videos</li>
+        <li class="tracker" data-anchor="chest"><b>2.97M</b> subscribers · core team <span class="badge">Team work</span></li>
+        <li class="tracker" data-anchor="pocket"><b>11.7M</b> views · 13 edits</li>
+      </ul>
     </div>
+    <div class="hero__copy">
+      <p class="eyebrow"><span>Abirich Vaithiyalingam</span><span>Content Strategist&nbsp;&amp; <span class="nw">Social Media Lead</span></span><span>Bengaluru</span></p>
+      <h1 class="hero__title" id="hero-title">I grow audiences. <span>And I make the videos that grow them.</span></h1>
+      <p class="hero__sub">7+ years in social video. I built my own Facebook page from zero to 1.18M followers. I led post-production and social media on the core team of a <span class="nw">2.97M-subscriber</span> creator brand. Today I plan the content for Kootan Soru.</p>
+      <div class="hero__row">
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#channels">See the channels<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost" href="cv/Abirich-Vaithiyalingam-CV.pdf" download><svg class="ico" aria-hidden="true"><use href="#i-down"/></svg>Download CV</a>
+        </div>
+        <p class="hero__now"><span class="live" aria-hidden="true"></span><span><b>Now:</b> <span class="nw">Content Strategist, Kootan Soru</span> · <span class="nw">Senior Video Editor, Arkahub, Bengaluru</span></span></p>
+      </div>
+    </div>
+    <div class="hero__scrollcue" aria-hidden="true">SCROLL TO PLAY</div>
   </section>
+  </div>
 
   <!-- 01 Channels -->
   <section class="section channels" id="channels" aria-labelledby="channels-title">
