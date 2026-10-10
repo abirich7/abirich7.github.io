@@ -4,7 +4,7 @@
 //  2b. the scroll-scrubbed photo sequence (shared js/seq.js, loaded after the page)
 //  3. "the audience assembles into the man": one raw-WebGL particle burst + reassembly
 //     (tier high + motion full only, once per session, REPLAY button, 3 s safety reveal).
-import { getMotion, getTier, motionAllowed, heavyMotionAllowed } from './state.js';
+import { getMotion, getTier, motionAllowed, heavyMotionAllowed } from './hero-state.js';
 
 const FLAG = 'abi.heroAssembled';
 const MASK = new URL('../assets/img/abirich-portrait-mask.png', import.meta.url).href;
@@ -19,7 +19,7 @@ let hero, stage, photo, maskImg, running = null, glBroken = false, inited = fals
 
 export function initHero() {
   if (inited) return;
-  hero = document.getElementById('hero');
+  hero = document.querySelector('section.hero');
   stage = document.getElementById('hero-stage');
   photo = document.getElementById('hero-photo');
   if (!hero || !stage || !photo) return;
@@ -323,4 +323,11 @@ function sample(hr, pr, dpr) {
   }
   const dot = Math.min(2.6, Math.max(1.6, step * kx * 0.85)) * dpr;
   return { data: data.subarray(0, n * 10), n, cx, cy, dot };
+}
+
+/* ---------- Boot: after load + idle, so the hero photo (LCP) and page scripts come first ---------- */
+{
+  const idle = (f) => (window.requestIdleCallback ? requestIdleCallback(f, { timeout: 1500 }) : setTimeout(f, 200));
+  const boot = () => idle(() => { try { initHero(); } catch (e) { /* static hero stays */ } });
+  if (document.readyState === 'complete') boot(); else addEventListener('load', boot, { once: true });
 }

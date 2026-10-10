@@ -9,7 +9,7 @@
 //    the bottom fade as the arms fold, so the folded arms stay visible at the end.
 //  - Frames load after window.load + idle, coarse to fine (0, last, middle, then the gaps); the nearest loaded frame draws.
 //  - Off when html[data-motion=off] (live via motion:change), on Save-Data, or if frames fail to load. No-JS: nothing.
-import { motionAllowed } from './state.js';
+import { motionAllowed } from './hero-state.js';
 
 const BASE = new URL('../assets/seq/', import.meta.url);
 const DESK = 1024;       // desktop frame set from this width
